@@ -69,7 +69,7 @@
                               @[@"public_profile", @"email", @"user_friends"]];
     loginView.delegate = self;
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 3*self.view.bounds.size.height/5);
-    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"LoginWITHwhiteBar.png"]];
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     self.view.backgroundColor = background;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
