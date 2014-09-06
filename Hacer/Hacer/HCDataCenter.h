@@ -8,20 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
+<<<<<<< HEAD
 #import "HCNewChoreViewController.h"
+#import "Household.h"
 
 @protocol HCNewsFeedDelegate;
 @protocol HCPersonalDelegate;
 @protocol HCSaveDelegate;
+
+@protocol HCSettingsDelegate <NSObject>
+-(void)didFetchSettingsData:(Household*)household people:(NSMutableArray*)people;
+@end
 
 @interface HCDataCenter : NSObject
 +(instancetype)sharedCenter;
 -(void)registerUser:(id<FBGraphUser>)user;
 -(void)loginUser:(id<FBGraphUser>)user;
 -(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>) delegate;
+<<<<<<< HEAD
 -(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate;
 -(NSArray *)getPeopleInHouse;
 -(void)saveTask: (HCNewChoreViewController *)ncvc del:(id<HCSaveDelegate>)delegate;
+-(void)setupSettings:(id<HCSettingsDelegate>)delegate;
 @end
 
 @protocol HCNewsFeedDelegate <NSObject>
