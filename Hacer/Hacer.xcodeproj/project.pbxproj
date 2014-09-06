@@ -50,6 +50,10 @@
 		58E2DB0A19BAC8CA0047444E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0919BAC8CA0047444E /* SystemConfiguration.framework */; };
 		58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */; };
 		58E2DB1219BACFAD0047444E /* HCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */; };
+		58F8143819BAFBA100148189 /* HCNewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8143619BAFBA100148189 /* HCNewsFeedTableViewCell.m */; };
+		58F8143919BAFBA100148189 /* HCNewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F8143719BAFBA100148189 /* HCNewsFeedTableViewCell.xib */; };
+		58F8143D19BAFBE200148189 /* Chore.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8143C19BAFBE200148189 /* Chore.m */; };
+		58F8144019BAFE4100148189 /* Household.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8143F19BAFE4100148189 /* Household.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +120,13 @@
 		58E2DB0E19BACFAD0047444E /* HCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCLoginViewController.h; sourceTree = "<group>"; };
 		58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCLoginViewController.m; sourceTree = "<group>"; };
 		58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCLoginViewController.xib; sourceTree = "<group>"; };
+		58F8143519BAFBA100148189 /* HCNewsFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCNewsFeedTableViewCell.h; sourceTree = "<group>"; };
+		58F8143619BAFBA100148189 /* HCNewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCNewsFeedTableViewCell.m; sourceTree = "<group>"; };
+		58F8143719BAFBA100148189 /* HCNewsFeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCNewsFeedTableViewCell.xib; sourceTree = "<group>"; };
+		58F8143B19BAFBE200148189 /* Chore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chore.h; sourceTree = "<group>"; };
+		58F8143C19BAFBE200148189 /* Chore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chore.m; sourceTree = "<group>"; };
+		58F8143E19BAFE4100148189 /* Household.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Household.h; sourceTree = "<group>"; };
+		58F8143F19BAFE4100148189 /* Household.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Household.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +170,10 @@
 			children = (
 				585ECE7D19BAD32F00072C39 /* HCDataCenter.h */,
 				585ECE7B19BAD32600072C39 /* HCDataCenter.m */,
+				58F8143B19BAFBE200148189 /* Chore.h */,
+				58F8143C19BAFBE200148189 /* Chore.m */,
+				58F8143E19BAFE4100148189 /* Household.h */,
+				58F8143F19BAFE4100148189 /* Household.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -271,6 +286,9 @@
 				5858BF1019BAF58800E0DD5E /* HCPersonalViewController.xib */,
 				5858BF1319BAF5AA00E0DD5E /* HCNewsFeedTableViewController.h */,
 				5858BF1419BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m */,
+				58F8143519BAFBA100148189 /* HCNewsFeedTableViewCell.h */,
+				58F8143619BAFBA100148189 /* HCNewsFeedTableViewCell.m */,
+				58F8143719BAFBA100148189 /* HCNewsFeedTableViewCell.xib */,
 				5858BF1619BAF5BE00E0DD5E /* HCHouseholdTableViewController.h */,
 				5858BF1719BAF5BE00E0DD5E /* HCHouseholdTableViewController.m */,
 			);
@@ -360,6 +378,7 @@
 				2833543D19BAFB7F0039E489 /* users.png in Resources */,
 				2833543519BAF9040039E489 /* home.png in Resources */,
 				58E2DACF19BAC6CC0047444E /* InfoPlist.strings in Resources */,
+				58F8143919BAFBA100148189 /* HCNewsFeedTableViewCell.xib in Resources */,
 				58E2DAD719BAC6CC0047444E /* Images.xcassets in Resources */,
 				2833543919BAFB470039E489 /* users.png in Resources */,
 				2833543C19BAFB7F0039E489 /* users_pressed.png in Resources */,
@@ -388,13 +407,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5858BF1819BAF5BE00E0DD5E /* HCHouseholdTableViewController.m in Sources */,
+				58F8143D19BAFBE200148189 /* Chore.m in Sources */,
 				58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */,
+				58F8143819BAFBA100148189 /* HCNewsFeedTableViewCell.m in Sources */,
 				58E2DAD119BAC6CC0047444E /* main.m in Sources */,
 				58E2DAD519BAC6CC0047444E /* HCAppDelegate.m in Sources */,
 				0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */,
 				585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */,
 				5858BF1519BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m in Sources */,
 				5858BF1119BAF58800E0DD5E /* HCPersonalViewController.m in Sources */,
+				58F8144019BAFE4100148189 /* Household.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

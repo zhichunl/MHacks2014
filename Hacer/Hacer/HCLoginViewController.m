@@ -55,12 +55,16 @@
     svc.tabBarItem.title = @"Settings";
     HCPersonalViewController *pvc = [[HCPersonalViewController alloc] init];
     pvc.tabBarItem.title = @"Personal";
+    UINavigationController *pnc = [[UINavigationController alloc] initWithRootViewController:pvc];
+    pnc.tabBarItem.title = @"Personal";
     HCNewsFeedTableViewController *ftvc = [[HCNewsFeedTableViewController alloc] init];
-    ftvc.tabBarItem.title = @"News Feed";
+    UINavigationController *fnc = [[UINavigationController alloc] initWithRootViewController:ftvc];
+    fnc.tabBarItem.title = @"News Feed";
     HCHouseholdTableViewController *htvc = [[HCHouseholdTableViewController alloc] init];
-    htvc.tabBarItem.title = @"Household";
+    UINavigationController *hnc = [[UINavigationController alloc] initWithRootViewController:htvc];
+    hnc.tabBarItem.title = @"Household";
     UITabBarController *tbc = [[UITabBarController alloc] init];
-    tbc.viewControllers = @[ftvc,htvc, pvc, svc];
+    tbc.viewControllers = @[fnc, hnc, pnc, svc];
     [self.navigationController presentViewController:tbc animated:YES completion:NULL];
 }
 

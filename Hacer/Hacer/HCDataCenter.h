@@ -9,8 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
 
+@protocol HCNewsFeedDelegate;
+
 @interface HCDataCenter : NSObject
 +(instancetype)sharedCenter;
 -(void)registerUser:(id<FBGraphUser>)user;
 -(void)loginUser:(id<FBGraphUser>)user;
+-(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>) delegate;
+@end
+
+@protocol HCNewsFeedDelegate <NSObject>
+-(void)newsFeedDataFetched;
 @end

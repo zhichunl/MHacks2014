@@ -9,12 +9,16 @@
 #import "HCAppDelegate.h"
 #import "Parse/Parse.h"
 #import "HCLoginViewController.h"
+#import "Chore.h"
+#import "Household.h"
 #import <FacebookSDK/FacebookSDK.h>
 
 @implementation HCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Chore registerSubclass];
+    [Household registerSubclass];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [Parse setApplicationId:@"QFdh5cnVzkUYZX0PgZW7u0tAP2kupAkjkgvGICfB"
                   clientKey:@"ykjUwTuppYKK7XHEEeER0fvwqvrzgpJ56yS7vz7E"];
