@@ -117,21 +117,32 @@
 }
 -(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate{
     PFObject *user = PFUser.currentUser;
-    NSInteger weeklyQuota = user[@"weeklyQuota"];
-    NSInteger accuCredit = user[@"accuQuota"];
-    NSInteger earnedQuota = 0;
-    NSString *userId = user[@"objectId"];
+    NSUInteger weeklyQuota = user[@"weeklyQuota"];
+    NSUInteger accuCredit = user[@"accuQuota"];
+    NSUInteger earnedQuota = 0;
     NSString *userName = user[@"username"];
-    PFQuery *query = [PFQuery queryWithClassName:@"Chore"];
-    [query whereKey:@"personAssigned" equalTo:userId];
-    NSArray *chores = [query findObjects];
-    [query whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: false]];
-    NSArray *finished = [query findObjects];
-    [query whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: true]];
-    NSArray *to_do = [query findObjects];
-    for (Chore* c in finished){
-        earnedQuota = earnedQuota + (NSInteger)c[@"Credit"];
+    PFQuery *fquery = [Chore query];
+    [fquery whereKey:@"personAssigned" equalTo:user];
+    [fquery whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: true]];
+    NSArray *finished = [fquery findObjects];
+    for (Chore* c in finished ){
+        earnedQuota = earnedQuota + (NSUInteger)c[@"Credit"];
     }
+    PFQuery *tquery = [PFQuery queryWithClassName:@"Chore"];
+    [tquery whereKey:@"personAssigned" equalTo:user];
+    [tquery whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: false]];
+    NSArray *incomplete = [tquery findObjects];
+    NSString *to_do = @"";
+    for (Chore *c in incomplete){
+        to_do = [NSString stringWithFormat:@"%@ \n %@", to_do, c[@"name"]];
+    }
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[@"userName"] = userName;
+    userInfo[@"weeklyQuota"] = [NSString stringWithFormat:@"%ld", weeklyQuota];
+    userInfo[@"accuCredit"] = [NSString stringWithFormat:@"%ld", accuCredit];
+    userInfo[@"earnedCredit"] = [NSString stringWithFormat:@"%ld", earnedQuota];
+    userInfo[@"to_do"] = to_do;
+    [delegate personalDataFetched:userInfo];
 }
 
 -(void)saveTask:(HCNewChoreViewController *)ncvc{

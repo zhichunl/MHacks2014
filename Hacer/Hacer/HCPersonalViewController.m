@@ -7,8 +7,9 @@
 //
 
 #import "HCPersonalViewController.h"
+#import "HCDataCenter.h"
 
-@interface HCPersonalViewController ()
+@interface HCPersonalViewController ()<HCPersonalDelegate>
 
 @end
 
@@ -24,13 +25,19 @@
 }
 
 -(void)personalDataFetched:(NSMutableDictionary *)data{
-    
+    self.userName.text = data[@"userName"];
+    self.weeklyQuota.text = data[@"weeklyQuota"];
+    self.earnedCredit.text = data[@"earnedCredit"];
+    self.accuCredit.text = data[@"accuCredit"];
+    self.chores.text = data[@"to_do"];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"Personal Record";
+    [[HCDataCenter sharedCenter] getPersonalInfo:self];
+    
 }
 
 - (void)didReceiveMemoryWarning

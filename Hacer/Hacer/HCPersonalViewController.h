@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface HCPersonalViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *earnedCredit;
+@property (weak, nonatomic) IBOutlet UILabel *accuCredit;
+@property (weak, nonatomic) IBOutlet UILabel *weeklyQuota;
+@property (weak, nonatomic) IBOutlet UITextView *chores;
 
 @end
