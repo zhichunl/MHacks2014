@@ -117,6 +117,7 @@
     }
 }
 -(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate{
+<<<<<<< HEAD
     PFObject *user = PFUser.currentUser;
     NSInteger weeklyQuota = [user[@"weeklyQuota"] integerValue];
     NSUInteger accuCredit = [user[@"accuQuota"] integerValue];
@@ -144,6 +145,38 @@
     userInfo[@"earnedCredit"] = [NSString stringWithFormat:@"%ld", earnedQuota];
     userInfo[@"to_do"] = to_do;
     [delegate personalDataFetched:userInfo];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        PFObject *user = PFUser.currentUser;
+        NSUInteger weeklyQuota = user[@"weeklyQuota"];
+        NSUInteger accuCredit = user[@"accuQuota"];
+        NSUInteger earnedQuota = 0;
+        NSString *userName = user[@"username"];
+        PFQuery *fquery = [Chore query];
+        [fquery whereKey:@"personAssigned" equalTo:user];
+        [fquery whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: true]];
+        NSArray *finished = [fquery findObjects];
+        for (Chore* c in finished ){
+            earnedQuota = earnedQuota + (NSUInteger)c[@"Credit"];
+        }
+        PFQuery *tquery = [PFQuery queryWithClassName:@"Chore"];
+        [tquery whereKey:@"personAssigned" equalTo:user];
+        [tquery whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: false]];
+        NSArray *incomplete = [tquery findObjects];
+        NSString *to_do = @"";
+        for (Chore *c in incomplete){
+            to_do = [NSString stringWithFormat:@"%@ \n %@", to_do, c[@"name"]];
+        }
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+        userInfo[@"userName"] = userName;
+        userInfo[@"weeklyQuota"] = [NSString stringWithFormat:@"%ld", weeklyQuota];
+        userInfo[@"accuCredit"] = [NSString stringWithFormat:@"%ld", accuCredit];
+        userInfo[@"earnedCredit"] = [NSString stringWithFormat:@"%ld", earnedQuota];
+        userInfo[@"to_do"] = to_do;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [delegate personalDataFetched:userInfo];
+        });
+    });
 }
 
 -(void)saveTask:(HCNewChoreViewController *)ncvc del:(id<HCSaveDelegate>)delegate{
