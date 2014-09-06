@@ -6,11 +6,15 @@
 //  Copyright (c) 2014 XSZ. All rights reserved.
 //
 
-
 #import "HCLoginViewController.h"
 #import "Parse/Parse.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "HCDataCenter.h"
+#import "HCSettingsViewController.h"
+#import "HCPersonalViewController.h"
+#import "HCNewsFeedTableViewController.h"
+#import "HCHouseholdTableViewController.h"
+
 
 @interface HCLoginViewController ()<FBLoginViewDelegate>
 @property (atomic, assign) BOOL registered;
@@ -47,12 +51,17 @@
 
 //the action after user login.
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
-   
-}
-
-- (void)loginView:(FBLoginView *)loginView
-      handleError:(NSError *)error{
-    
+    HCSettingsViewController *svc = [[HCSettingsViewController alloc] init];
+    svc.tabBarItem.title = @"Settings";
+    HCPersonalViewController *pvc = [[HCPersonalViewController alloc] init];
+    pvc.tabBarItem.title = @"Personal";
+    HCNewsFeedTableViewController *ftvc = [[HCNewsFeedTableViewController alloc] init];
+    ftvc.tabBarItem.title = @"News Feed";
+    HCHouseholdTableViewController *htvc = [[HCHouseholdTableViewController alloc] init];
+    htvc.tabBarItem.title = @"Household";
+    UITabBarController *tbc = [[UITabBarController alloc] init];
+    tbc.viewControllers = @[ftvc,htvc, pvc, svc];
+    [self.navigationController presentViewController:tbc animated:YES completion:NULL];
 }
 
 

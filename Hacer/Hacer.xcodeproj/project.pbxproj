@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */; };
 		0DB74CEE19BADB64008E7CC1 /* HCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */; };
-		5858BF0D19BAEFF600E0DD5E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */; };
 		2833543319BAF2150039E489 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833543219BAF2150039E489 /* bg.png */; };
+		5858BF0D19BAEFF600E0DD5E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */; };
+		5858BF1119BAF58800E0DD5E /* HCPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5858BF0F19BAF58800E0DD5E /* HCPersonalViewController.m */; };
+		5858BF1219BAF58800E0DD5E /* HCPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5858BF1019BAF58800E0DD5E /* HCPersonalViewController.xib */; };
+		5858BF1519BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5858BF1419BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m */; };
+		5858BF1819BAF5BE00E0DD5E /* HCHouseholdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5858BF1719BAF5BE00E0DD5E /* HCHouseholdTableViewController.m */; };
 		585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ECE7B19BAD32600072C39 /* HCDataCenter.m */; };
 		58E2DAC519BAC6CC0047444E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC419BAC6CC0047444E /* Foundation.framework */; };
 		58E2DAC719BAC6CC0047444E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC619BAC6CC0047444E /* CoreGraphics.framework */; };
@@ -53,8 +57,15 @@
 		0DB74CEA19BADB64008E7CC1 /* HCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSettingsViewController.h; sourceTree = "<group>"; };
 		0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSettingsViewController.m; sourceTree = "<group>"; };
 		0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCSettingsViewController.xib; sourceTree = "<group>"; };
-		5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		2833543219BAF2150039E489 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = ../../Images/bg.png; sourceTree = "<group>"; };
+		5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		5858BF0E19BAF58800E0DD5E /* HCPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCPersonalViewController.h; sourceTree = "<group>"; };
+		5858BF0F19BAF58800E0DD5E /* HCPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCPersonalViewController.m; sourceTree = "<group>"; };
+		5858BF1019BAF58800E0DD5E /* HCPersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCPersonalViewController.xib; sourceTree = "<group>"; };
+		5858BF1319BAF5AA00E0DD5E /* HCNewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCNewsFeedTableViewController.h; sourceTree = "<group>"; };
+		5858BF1419BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCNewsFeedTableViewController.m; sourceTree = "<group>"; };
+		5858BF1619BAF5BE00E0DD5E /* HCHouseholdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCHouseholdTableViewController.h; sourceTree = "<group>"; };
+		5858BF1719BAF5BE00E0DD5E /* HCHouseholdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCHouseholdTableViewController.m; sourceTree = "<group>"; };
 		585ECE7B19BAD32600072C39 /* HCDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCDataCenter.m; sourceTree = "<group>"; };
 		585ECE7D19BAD32F00072C39 /* HCDataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCDataCenter.h; sourceTree = "<group>"; };
 		58E2DAC119BAC6CC0047444E /* Hacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +239,13 @@
 				0DB74CEA19BADB64008E7CC1 /* HCSettingsViewController.h */,
 				0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */,
 				0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */,
+				5858BF0E19BAF58800E0DD5E /* HCPersonalViewController.h */,
+				5858BF0F19BAF58800E0DD5E /* HCPersonalViewController.m */,
+				5858BF1019BAF58800E0DD5E /* HCPersonalViewController.xib */,
+				5858BF1319BAF5AA00E0DD5E /* HCNewsFeedTableViewController.h */,
+				5858BF1419BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m */,
+				5858BF1619BAF5BE00E0DD5E /* HCHouseholdTableViewController.h */,
+				5858BF1719BAF5BE00E0DD5E /* HCHouseholdTableViewController.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -314,6 +332,7 @@
 				58E2DACF19BAC6CC0047444E /* InfoPlist.strings in Resources */,
 				58E2DAD719BAC6CC0047444E /* Images.xcassets in Resources */,
 				58E2DB1219BACFAD0047444E /* HCLoginViewController.xib in Resources */,
+				5858BF1219BAF58800E0DD5E /* HCPersonalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,11 +351,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5858BF1819BAF5BE00E0DD5E /* HCHouseholdTableViewController.m in Sources */,
 				58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */,
 				58E2DAD119BAC6CC0047444E /* main.m in Sources */,
 				58E2DAD519BAC6CC0047444E /* HCAppDelegate.m in Sources */,
 				0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */,
 				585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */,
+				5858BF1519BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m in Sources */,
+				5858BF1119BAF58800E0DD5E /* HCPersonalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
