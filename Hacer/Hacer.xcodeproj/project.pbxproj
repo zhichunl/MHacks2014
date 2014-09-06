@@ -53,6 +53,10 @@
 		58F8143919BAFBA100148189 /* HCNewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F8143719BAFBA100148189 /* HCNewsFeedTableViewCell.xib */; };
 		58F8143D19BAFBE200148189 /* Chore.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8143C19BAFBE200148189 /* Chore.m */; };
 		58F8144019BAFE4100148189 /* Household.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8143F19BAFE4100148189 /* Household.m */; };
+		58F8144419BB14BD00148189 /* HCNewChoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8144219BB14BD00148189 /* HCNewChoreViewController.m */; };
+		58F8144519BB14BD00148189 /* HCNewChoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F8144319BB14BD00148189 /* HCNewChoreViewController.xib */; };
+		58F8144919BB428E00148189 /* HCTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8144719BB428E00148189 /* HCTaskDetailViewController.m */; };
+		58F8144A19BB428E00148189 /* HCTaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F8144819BB428E00148189 /* HCTaskDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +129,12 @@
 		58F8143C19BAFBE200148189 /* Chore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chore.m; sourceTree = "<group>"; };
 		58F8143E19BAFE4100148189 /* Household.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Household.h; sourceTree = "<group>"; };
 		58F8143F19BAFE4100148189 /* Household.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Household.m; sourceTree = "<group>"; };
+		58F8144119BB14BD00148189 /* HCNewChoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCNewChoreViewController.h; sourceTree = "<group>"; };
+		58F8144219BB14BD00148189 /* HCNewChoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCNewChoreViewController.m; sourceTree = "<group>"; };
+		58F8144319BB14BD00148189 /* HCNewChoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCNewChoreViewController.xib; sourceTree = "<group>"; };
+		58F8144619BB428E00148189 /* HCTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCTaskDetailViewController.h; sourceTree = "<group>"; };
+		58F8144719BB428E00148189 /* HCTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCTaskDetailViewController.m; sourceTree = "<group>"; };
+		58F8144819BB428E00148189 /* HCTaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCTaskDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +296,12 @@
 				58F8143519BAFBA100148189 /* HCNewsFeedTableViewCell.h */,
 				58F8143619BAFBA100148189 /* HCNewsFeedTableViewCell.m */,
 				58F8143719BAFBA100148189 /* HCNewsFeedTableViewCell.xib */,
+				58F8144619BB428E00148189 /* HCTaskDetailViewController.h */,
+				58F8144719BB428E00148189 /* HCTaskDetailViewController.m */,
+				58F8144819BB428E00148189 /* HCTaskDetailViewController.xib */,
+				58F8144119BB14BD00148189 /* HCNewChoreViewController.h */,
+				58F8144219BB14BD00148189 /* HCNewChoreViewController.m */,
+				58F8144319BB14BD00148189 /* HCNewChoreViewController.xib */,
 				5858BF1619BAF5BE00E0DD5E /* HCHouseholdTableViewController.h */,
 				5858BF1719BAF5BE00E0DD5E /* HCHouseholdTableViewController.m */,
 			);
@@ -373,11 +389,13 @@
 				2833546319BB11D30039E489 /* timeline_pressed.png in Resources */,
 				2833546419BB11D30039E489 /* timeline.png in Resources */,
 				2833543319BAF2150039E489 /* bg.png in Resources */,
+				58F8144519BB14BD00148189 /* HCNewChoreViewController.xib in Resources */,
 				0DB74CEE19BADB64008E7CC1 /* HCSettingsViewController.xib in Resources */,
 				58E2DACF19BAC6CC0047444E /* InfoPlist.strings in Resources */,
 				58F8143919BAFBA100148189 /* HCNewsFeedTableViewCell.xib in Resources */,
 				58E2DAD719BAC6CC0047444E /* Images.xcassets in Resources */,
 				58E2DB1219BACFAD0047444E /* HCLoginViewController.xib in Resources */,
+				58F8144A19BB428E00148189 /* HCTaskDetailViewController.xib in Resources */,
 				5858BF1219BAF58800E0DD5E /* HCPersonalViewController.xib in Resources */,
 				2833546619BB11D30039E489 /* users.png in Resources */,
 				2833546A19BB11DD0039E489 /* home.png in Resources */,
@@ -404,8 +422,10 @@
 			files = (
 				5858BF1819BAF5BE00E0DD5E /* HCHouseholdTableViewController.m in Sources */,
 				58F8143D19BAFBE200148189 /* Chore.m in Sources */,
+				58F8144419BB14BD00148189 /* HCNewChoreViewController.m in Sources */,
 				58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */,
 				58F8143819BAFBA100148189 /* HCNewsFeedTableViewCell.m in Sources */,
+				58F8144919BB428E00148189 /* HCTaskDetailViewController.m in Sources */,
 				58E2DAD119BAC6CC0047444E /* main.m in Sources */,
 				58E2DAD519BAC6CC0047444E /* HCAppDelegate.m in Sources */,
 				0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */,

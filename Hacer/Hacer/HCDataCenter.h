@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "HCNewChoreViewController.h"
 
 @protocol HCNewsFeedDelegate;
 
@@ -16,8 +17,10 @@
 -(void)registerUser:(id<FBGraphUser>)user;
 -(void)loginUser:(id<FBGraphUser>)user;
 -(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>) delegate;
+-(NSArray *)getPeopleInHouse;
+-(void)saveTask: (HCNewChoreViewController *)ncvc;
 @end
 
 @protocol HCNewsFeedDelegate <NSObject>
--(void)newsFeedDataFetched: (NSMutableArray *)data;
+-(void)newsFeedDataFetched: (NSMutableDictionary *)data;
 @end

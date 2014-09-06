@@ -51,8 +51,90 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         PFQuery *query = [Chore query];
+        Household* curHousehold = (PFUser.currentUser)[@"household"];
+        if (curHousehold){
+            [query whereKey:@"HH" equalTo:curHousehold];
+            NSArray *chores = [query findObjects];
+            NSMutableDictionary *choresF = [NSMutableDictionary dictionary];
+            for (Chore* c in chores) {
+                Chore* cf = (Chore *)[c fetchIfNeeded];
+                NSDate *dueDate = cf.dueDate;
+                NSDateFormatter *dformat = [[NSDateFormatter alloc]init];
+                [dformat setDateFormat:@"yyyy-MM-dd"];
+                NSString *due = [dformat stringFromDate:dueDate];
+                if ([choresF objectForKey:due] == nil){
+                    choresF[due] = @[cf];
+                }
+                else{
+                    NSMutableArray *array = [choresF[due] mutableCopy];
+                    [array addObject:due];
+                    choresF[due] = array;
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [delegate newsFeedDataFetched:choresF];
+            });
+        }
+        else{
+            [query whereKey:@"personAssigned" equalTo:PFUser.currentUser];
+            NSArray *chores = [query findObjects];
+            NSMutableDictionary *choresF = [NSMutableDictionary dictionary];
+            for (Chore* c in chores) {
+                Chore* cf = (Chore *)[c fetchIfNeeded];
+                NSDate *dueDate = cf.dueDate;
+                NSDateFormatter *dformat = [[NSDateFormatter alloc]init];
+                [dformat setDateFormat:@"MM/dd/yyyy"];
+                NSString *due = [dformat stringFromDate:dueDate];
+                if ([choresF objectForKey:due] == nil){
+                    choresF[due] = @[cf];
+                }
+                else{
+                    NSMutableArray *array = [choresF[due] mutableCopy];
+                    [array addObject:cf];
+                    choresF[due] = array;
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [delegate newsFeedDataFetched:choresF];
+            });
+        }
+            
         
     });
+}
+
+-(NSArray *)getPeopleInHouse{
+    Household *curHouse = (PFUser.currentUser)[@"household"];
+    if (curHouse){
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"household" equalTo:curHouse];
+        NSArray *people = [query findObjects];
+        return people;
+    }
+    else{
+        return @[PFUser.currentUser];
+    }
+}
+
+-(void)saveTask:(HCNewChoreViewController *)ncvc{
+    Chore* newChore = [Chore object];
+    newChore.name = ncvc.nameField.text;
+    newChore.finished = NO;
+    newChore.dueDate = ncvc.datePicked.date;
+    NSInteger count = [ncvc.pickerView selectedRowInComponent:0];
+    if (ncvc.noOtherPeople.alpha == 1.0){
+        newChore.personAssigned = PFUser.currentUser;
+        newChore.isClaimed = YES;
+    }
+    else if (count == [ncvc.people count]){
+        newChore.isClaimed = NO;
+    }
+    else{
+        newChore.isClaimed = YES;
+        newChore.personAssigned = ncvc.people[count];
+    }
+    newChore.Credit = [ncvc.valueField.text intValue];
+    [newChore save];
 }
 
 @end

@@ -20,4 +20,7 @@
 @dynamic isClaimed;
 @dynamic name;
 @dynamic personAssigned;
+@dynamic HH;
+@dynamic finished;
+@dynamic Credit;
 @end

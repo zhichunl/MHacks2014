@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface HCNewsFeedTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UIButton *checkButton;
+@property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePic;
+@property (weak, nonatomic) IBOutlet UILabel *taskName;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 @end

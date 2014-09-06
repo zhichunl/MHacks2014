@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Parse/Parse.h"
+#import "Household.h"
 
 @interface Chore : PFObject<PFSubclassing>
 + (NSString *)parseClassName;
@@ -15,5 +16,8 @@
 @property BOOL isClaimed;
 @property (retain) NSString *name;
 @property (retain) PFUser *personAssigned;
+@property (retain) Household* HH;
+@property BOOL finished;
+@property NSInteger Credit;
 @end
 
