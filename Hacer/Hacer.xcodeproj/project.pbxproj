@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ECE7B19BAD32600072C39 /* HCDataCenter.m */; };
 		58E2DAC519BAC6CC0047444E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC419BAC6CC0047444E /* Foundation.framework */; };
 		58E2DAC719BAC6CC0047444E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC619BAC6CC0047444E /* CoreGraphics.framework */; };
 		58E2DAC919BAC6CC0047444E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC819BAC6CC0047444E /* UIKit.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		585ECE7B19BAD32600072C39 /* HCDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCDataCenter.m; sourceTree = "<group>"; };
+		585ECE7D19BAD32F00072C39 /* HCDataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCDataCenter.h; sourceTree = "<group>"; };
 		58E2DAC119BAC6CC0047444E /* Hacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E2DAC419BAC6CC0047444E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58E2DAC619BAC6CC0047444E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		585ECE7E19BAD33200072C39 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				585ECE7B19BAD32600072C39 /* HCDataCenter.m */,
+				585ECE7D19BAD32F00072C39 /* HCDataCenter.h */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		58E2DAB819BAC6CC0047444E = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +172,7 @@
 		58E2DACA19BAC6CC0047444E /* Hacer */ = {
 			isa = PBXGroup;
 			children = (
+				585ECE7E19BAD33200072C39 /* Data */,
 				58E2DB0D19BACF5C0047444E /* General */,
 				58E2DAD619BAC6CC0047444E /* Images.xcassets */,
 				58E2DACB19BAC6CC0047444E /* Supporting Files */,
@@ -308,6 +321,7 @@
 				58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */,
 				58E2DAD119BAC6CC0047444E /* main.m in Sources */,
 				58E2DAD519BAC6CC0047444E /* HCAppDelegate.m in Sources */,
+				585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +526,7 @@
 				58E2DAEF19BAC6CC0047444E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58E2DAF019BAC6CC0047444E /* Build configuration list for PBXNativeTarget "HacerTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +535,7 @@
 				58E2DAF219BAC6CC0047444E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
