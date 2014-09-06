@@ -57,6 +57,7 @@
 		58F8144519BB14BD00148189 /* HCNewChoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F8144319BB14BD00148189 /* HCNewChoreViewController.xib */; };
 		58F8144919BB428E00148189 /* HCTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8144719BB428E00148189 /* HCTaskDetailViewController.m */; };
 		58F8144A19BB428E00148189 /* HCTaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F8144819BB428E00148189 /* HCTaskDetailViewController.xib */; };
+		58F8145119BB4F4400148189 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8145019BB4F4400148189 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,8 @@
 		58F8144619BB428E00148189 /* HCTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCTaskDetailViewController.h; sourceTree = "<group>"; };
 		58F8144719BB428E00148189 /* HCTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCTaskDetailViewController.m; sourceTree = "<group>"; };
 		58F8144819BB428E00148189 /* HCTaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCTaskDetailViewController.xib; sourceTree = "<group>"; };
+		58F8144F19BB4F3A00148189 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		58F8145019BB4F4400148189 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +243,7 @@
 				2833546819BB11DD0039E489 /* home.png */,
 				2833545F19BB11D30039E489 /* users_pressed.png */,
 				2833546019BB11D30039E489 /* users.png */,
+				58F8144B19BB4E3200148189 /* Loading View */,
 				585ECE7E19BAD33200072C39 /* Data */,
 				58E2DB0D19BACF5C0047444E /* General */,
 				58E2DAD619BAC6CC0047444E /* Images.xcassets */,
@@ -306,6 +310,15 @@
 				5858BF1719BAF5BE00E0DD5E /* HCHouseholdTableViewController.m */,
 			);
 			name = General;
+			sourceTree = "<group>";
+		};
+		58F8144B19BB4E3200148189 /* Loading View */ = {
+			isa = PBXGroup;
+			children = (
+				58F8144F19BB4F3A00148189 /* MBProgressHUD.h */,
+				58F8145019BB4F4400148189 /* MBProgressHUD.m */,
+			);
+			name = "Loading View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +446,7 @@
 				5858BF1519BAF5AA00E0DD5E /* HCNewsFeedTableViewController.m in Sources */,
 				5858BF1119BAF58800E0DD5E /* HCPersonalViewController.m in Sources */,
 				58F8144019BAFE4100148189 /* Household.m in Sources */,
+				58F8145119BB4F4400148189 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

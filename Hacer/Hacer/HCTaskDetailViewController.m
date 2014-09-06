@@ -26,6 +26,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.NameAndCredit.text = self.name;
+    self.dueDate.text = self.date;
+    self.AssignedTo.text = self.person;
+    self.finished.text = self.completed;
+    if (!self.claimed){
+        self.claimButton.alpha = 1.0;
+        self.AssignedTo.text = @"Not assigned to anyone!";
+    }
+    else{
+        self.claimButton.alpha = 0.0;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 

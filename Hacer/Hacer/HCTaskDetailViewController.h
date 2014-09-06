@@ -10,8 +10,13 @@
 
 @interface HCTaskDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *NameAndCredit;
+@property (strong, nonatomic) NSString *name;
 @property (weak, nonatomic) IBOutlet UILabel *dueDate;
+@property (strong, nonatomic) NSString *date;
 @property (weak, nonatomic) IBOutlet UILabel *AssignedTo;
+@property (strong, nonatomic) NSString *person;
 @property (weak, nonatomic) IBOutlet UILabel *finished;
+@property (strong, nonatomic) NSString *completed;
 @property (weak, nonatomic) IBOutlet UIButton *claimButton;
+@property BOOL claimed;
 @end
