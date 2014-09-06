@@ -8,6 +8,7 @@
 
 #import "HCAppDelegate.h"
 #import "Parse/Parse.h"
+#import "HCLoginViewController.h"
 
 @implementation HCAppDelegate
 
@@ -19,6 +20,9 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
+    HCLoginViewController* hclvc = [[HCLoginViewController alloc] init];
+    UINavigationController *hnc = [[UINavigationController alloc] initWithRootViewController:hclvc];
+    self.window.rootViewController = hnc;
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

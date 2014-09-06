@@ -30,6 +30,9 @@
 		58E2DB0619BAC8A80047444E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0519BAC8A80047444E /* Security.framework */; };
 		58E2DB0819BAC8B10047444E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0719BAC8B10047444E /* StoreKit.framework */; };
 		58E2DB0A19BAC8CA0047444E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0919BAC8CA0047444E /* SystemConfiguration.framework */; };
+		58E2DB0C19BACD550047444E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0B19BACD550047444E /* FacebookSDK.framework */; };
+		58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */; };
+		58E2DB1219BACFAD0047444E /* HCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,10 @@
 		58E2DB0519BAC8A80047444E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58E2DB0719BAC8B10047444E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		58E2DB0919BAC8CA0047444E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58E2DB0B19BACD550047444E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		58E2DB0E19BACFAD0047444E /* HCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCLoginViewController.h; sourceTree = "<group>"; };
+		58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCLoginViewController.m; sourceTree = "<group>"; };
+		58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCLoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +95,7 @@
 				58E2DAFA19BAC8660047444E /* AudioToolbox.framework in Frameworks */,
 				58E2DAC719BAC6CC0047444E /* CoreGraphics.framework in Frameworks */,
 				58E2DAC919BAC6CC0047444E /* UIKit.framework in Frameworks */,
+				58E2DB0C19BACD550047444E /* FacebookSDK.framework in Frameworks */,
 				58E2DAC519BAC6CC0047444E /* Foundation.framework in Frameworks */,
 				58E2DAF619BAC8200047444E /* Bolts.framework in Frameworks */,
 				58E2DAF819BAC82B0047444E /* Parse.framework in Frameworks */,
@@ -129,6 +137,7 @@
 		58E2DAC319BAC6CC0047444E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58E2DB0B19BACD550047444E /* FacebookSDK.framework */,
 				58E2DB0919BAC8CA0047444E /* SystemConfiguration.framework */,
 				58E2DB0719BAC8B10047444E /* StoreKit.framework */,
 				58E2DB0519BAC8A80047444E /* Security.framework */,
@@ -151,8 +160,7 @@
 		58E2DACA19BAC6CC0047444E /* Hacer */ = {
 			isa = PBXGroup;
 			children = (
-				58E2DAD319BAC6CC0047444E /* HCAppDelegate.h */,
-				58E2DAD419BAC6CC0047444E /* HCAppDelegate.m */,
+				58E2DB0D19BACF5C0047444E /* General */,
 				58E2DAD619BAC6CC0047444E /* Images.xcassets */,
 				58E2DACB19BAC6CC0047444E /* Supporting Files */,
 			);
@@ -186,6 +194,18 @@
 				58E2DAE619BAC6CC0047444E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58E2DB0D19BACF5C0047444E /* General */ = {
+			isa = PBXGroup;
+			children = (
+				58E2DAD319BAC6CC0047444E /* HCAppDelegate.h */,
+				58E2DAD419BAC6CC0047444E /* HCAppDelegate.m */,
+				58E2DB0E19BACFAD0047444E /* HCLoginViewController.h */,
+				58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */,
+				58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */,
+			);
+			name = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +286,7 @@
 			files = (
 				58E2DACF19BAC6CC0047444E /* InfoPlist.strings in Resources */,
 				58E2DAD719BAC6CC0047444E /* Images.xcassets in Resources */,
+				58E2DB1219BACFAD0047444E /* HCLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */,
 				58E2DAD119BAC6CC0047444E /* main.m in Sources */,
 				58E2DAD519BAC6CC0047444E /* HCAppDelegate.m in Sources */,
 			);
