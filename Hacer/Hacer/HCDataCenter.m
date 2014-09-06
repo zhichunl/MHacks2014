@@ -103,7 +103,6 @@
     });
 }
 
-<<<<<<< HEAD
 -(NSArray *)getPeopleInHouse{
     Household *curHouse = (PFUser.currentUser)[@"household"];
     if (curHouse){
@@ -173,6 +172,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [delegate saved];
     });
+}
+
 -(void)setupSettings:(id<HCSettingsDelegate>)delegate
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
