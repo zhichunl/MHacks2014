@@ -11,7 +11,7 @@
 #import "Parse/Parse.h"
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface HCLoginViewController ()<UIAlertViewDelegate, FBLoginViewDelegate>
+@interface HCLoginViewController ()<FBLoginViewDelegate>
 @property (atomic, assign) BOOL registered;
 @property (strong, nonatomic) UIAlertView *message;
 @end
@@ -30,6 +30,7 @@
 //fetching user info to upload to parse
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
+    NSLog(@"loginViewFetchedUserInfo");
     if (!self.registered){
         PFQuery *forUser = [PFUser query];
         [forUser whereKey:@"profileID" equalTo:user.objectID];
@@ -61,6 +62,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSLog(@"ViewDidLoad Start");
     FBLoginView *loginView = [[FBLoginView alloc]initWithReadPermissions:
                               @[@"public_profile", @"email", @"user_friends"]];
     loginView.delegate = self;
