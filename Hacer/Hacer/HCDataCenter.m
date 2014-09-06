@@ -9,6 +9,8 @@
 #import "HCDataCenter.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "Parse/Parse.h"
+#import "Chore.h"
+#import "Household.h"
 
 @implementation HCDataCenter
 
@@ -43,6 +45,14 @@
                                             // The login failed. Check error to see why.
                                         }
                                     }];
+}
+
+-(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>)delegate{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        PFQuery *query = [Chore query];
+        
+    });
 }
 
 @end

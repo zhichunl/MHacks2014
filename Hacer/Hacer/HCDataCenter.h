@@ -19,5 +19,5 @@
 @end
 
 @protocol HCNewsFeedDelegate <NSObject>
--(void)newsFeedDataFetched;
+-(void)newsFeedDataFetched: (NSMutableArray *)data;
 @end
