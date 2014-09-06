@@ -15,7 +15,7 @@
 #import "MBProgressHUD.h"
 #import "HCTaskDetailViewController.h"
 
-@interface HCNewsFeedTableViewController ()<HCNewsFeedDelegate>
+@interface HCNewsFeedTableViewController ()<HCNewsFeedDelegate, NFTCellDelegate, HCSaveDelegate>
 @property NSMutableArray *sections;
 @property NSMutableDictionary *dataDict;
 @property HCNewChoreViewController *ncvc;
@@ -70,7 +70,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.title = @"All Tasks";
+    self.navigationItem.title = @"All Chores";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(_addTask)];
     [[HCDataCenter sharedCenter] fetchAllTasksByDate:self];
     [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
@@ -99,14 +99,17 @@
 }
 
 -(void)_saveTask{
+    [MBProgressHUD showHUDAddedTo:self.ncvc.view animated:YES];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        [[HCDataCenter sharedCenter] saveTask:self.ncvc];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
+        [[HCDataCenter sharedCenter] saveTask:self.ncvc del:self];
     });
+}
+
+-(void)saved{
+    [MBProgressHUD hideAllHUDsForView:self.ncvc.view animated:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+    [[HCDataCenter sharedCenter] fetchAllTasksByDate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -145,11 +148,37 @@
             cell.profilePic.profileID = user[@"facebookID"];
         });
     });
-    cell.checkButton.layer.cornerRadius = 15;
+    if (curChore.finished){
+        [cell.checkButton setBackgroundImage:[UIImage imageNamed:@"heart-full.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [cell.checkButton setBackgroundImage:[UIImage imageNamed:@"heart-empty.png"] forState:UIControlStateNormal];
+    }
+    cell.delegate = self;
+    cell.path = indexPath;
+    cell.checkButton.layer.cornerRadius = 5;
     cell.checkButton.layer.masksToBounds = YES;
     cell.profilePic.layer.cornerRadius = 15;
     cell.profilePic.layer.masksToBounds = YES;
     return cell;
+}
+
+-(void)cellClicked:(NSIndexPath *)path{
+    NSArray *chores = self.dataDict[self.sections[path.section]];
+    Chore *curChore = chores[path.row];
+    if (curChore.finished == YES){
+        return;
+    }
+    curChore.finished = YES;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [curChore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded){
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self.tableView beginUpdates];
+            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView endUpdates];
+        }
+    }];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -200,13 +229,14 @@
     HCTaskDetailViewController* tdvc = [[HCTaskDetailViewController alloc] init];
     NSArray *chores = self.dataDict[self.sections[indexPath.section]];
     Chore *curChore = chores[indexPath.row];
-    tdvc.name = [NSString stringWithFormat:@"%@ - %ld", curChore.name, curChore.Credit];
+    tdvc.navigationItem.title = curChore.name;
+    tdvc.name = [NSString stringWithFormat:@"%@ with a value of %ld credit(s).", curChore.name, curChore.Credit];
     tdvc.date = [NSString stringWithFormat:@"Due on %@.", self.sections[indexPath.section]];
     if (curChore.finished){
-        tdvc.completed = @"The Task has been completed.";
+        tdvc.completed = @"The task has been completed.";
     }
     else{
-        tdvc.completed = @"The Task hasn't been completed.";
+        tdvc.completed = @"The task hasn't been completed.";
     }
     tdvc.claimed = curChore.isClaimed;
     if (curChore.personAssigned){
@@ -235,18 +265,20 @@
 }
 */
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        NSArray *chores = self.dataDict[self.sections[indexPath.section]];
+        Chore *curChore = chores[indexPath.row];
+        [curChore deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded){
+                [[HCDataCenter sharedCenter] fetchAllTasksByDate:self];
+            }
+        }];
+    }
 }
-*/
 
 /*
 // Override to support rearranging the table view.

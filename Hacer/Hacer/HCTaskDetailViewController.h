@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HCTaskDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *NameAndCredit;
+@property (weak, nonatomic) IBOutlet UITextView *NameAndValue;
+
 @property (strong, nonatomic) NSString *name;
 @property (weak, nonatomic) IBOutlet UILabel *dueDate;
 @property (strong, nonatomic) NSString *date;

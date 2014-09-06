@@ -26,7 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.NameAndCredit.text = self.name;
+    self.NameAndValue.text = self.name;
+    self.NameAndValue.font = [UIFont fontWithName:@"Helvetica" size:17.0f];
     self.dueDate.text = self.date;
     self.AssignedTo.text = self.person;
     self.finished.text = self.completed;

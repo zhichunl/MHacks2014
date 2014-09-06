@@ -145,7 +145,7 @@
     [delegate personalDataFetched:userInfo];
 }
 
--(void)saveTask:(HCNewChoreViewController *)ncvc{
+-(void)saveTask:(HCNewChoreViewController *)ncvc del:(id<HCSaveDelegate>)delegate{
     Chore* newChore = [Chore object];
     newChore.name = ncvc.nameField.text;
     newChore.finished = NO;
@@ -164,6 +164,9 @@
     }
     newChore.Credit = [ncvc.valueField.text intValue];
     [newChore save];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [delegate saved];
+    });
 }
 
 @end

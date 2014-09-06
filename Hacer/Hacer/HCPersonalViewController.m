@@ -29,7 +29,7 @@
     self.weeklyQuota.text = data[@"weeklyQuota"];
     self.earnedCredit.text = data[@"earnedCredit"];
     self.accuCredit.text = data[@"accuCredit"];
-    self.chores.text = data[@"to_do"];
+    self.chores.text = data[@"to_do"];  
 }
 
 - (void)viewDidLoad

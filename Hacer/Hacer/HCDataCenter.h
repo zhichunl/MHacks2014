@@ -12,6 +12,7 @@
 
 @protocol HCNewsFeedDelegate;
 @protocol HCPersonalDelegate;
+@protocol HCSaveDelegate;
 
 @interface HCDataCenter : NSObject
 +(instancetype)sharedCenter;
@@ -20,7 +21,7 @@
 -(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>) delegate;
 -(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate;
 -(NSArray *)getPeopleInHouse;
--(void)saveTask: (HCNewChoreViewController *)ncvc;
+-(void)saveTask: (HCNewChoreViewController *)ncvc del:(id<HCSaveDelegate>)delegate;
 @end
 
 @protocol HCNewsFeedDelegate <NSObject>
@@ -29,4 +30,8 @@
 
 @protocol HCPersonalDelegate <NSObject>
 -(void)personalDataFetched:(NSMutableDictionary *)data;
+@end
+
+@protocol HCSaveDelegate <NSObject>
+-(void)saved;
 @end
