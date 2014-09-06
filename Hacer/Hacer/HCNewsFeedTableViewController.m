@@ -12,11 +12,14 @@
 #import "Chore.h"
 #import "HCNewChoreViewController.h"
 #import "FacebookSDK/FacebookSDK.h"
+#import "MBProgressHUD.h"
+#import "HCTaskDetailViewController.h"
 
 @interface HCNewsFeedTableViewController ()<HCNewsFeedDelegate>
 @property NSMutableArray *sections;
 @property NSMutableDictionary *dataDict;
 @property HCNewChoreViewController *ncvc;
+@property UIRefreshControl* refreshControl;
 @end
 
 @implementation HCNewsFeedTableViewController
@@ -50,6 +53,7 @@
         [temp2 addObject:date];
     }
     self.sections = [temp2 copy];
+    [MBProgressHUD hideAllHUDsForView:self.tableView animated:YES];
     [self.tableView reloadData];
 }
 
@@ -69,6 +73,17 @@
     self.navigationItem.title = @"All Tasks";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(_addTask)];
     [[HCDataCenter sharedCenter] fetchAllTasksByDate:self];
+    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
+    [refreshControl addTarget:self action:@selector(updateTable) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    self.refreshControl = refreshControl;
+}
+
+-(void)updateTable{
+    [[HCDataCenter sharedCenter] fetchAllTasksByDate:self];
+    [self.refreshControl endRefreshing];
 }
 
 -(void)_addTask{
@@ -128,14 +143,12 @@
         PFUser *user = (PFUser *)[curChore.personAssigned fetchIfNeeded];
         dispatch_async(dispatch_get_main_queue(), ^{
             cell.profilePic.profileID = user[@"facebookID"];
-            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         });
     });
     cell.checkButton.layer.cornerRadius = 15;
     cell.checkButton.layer.masksToBounds = YES;
     cell.profilePic.layer.cornerRadius = 15;
     cell.profilePic.layer.masksToBounds = YES;
-    // Configure the cell...
     return cell;
 }
 
@@ -181,6 +194,37 @@
     }
     return title;
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    HCTaskDetailViewController* tdvc = [[HCTaskDetailViewController alloc] init];
+    NSArray *chores = self.dataDict[self.sections[indexPath.section]];
+    Chore *curChore = chores[indexPath.row];
+    tdvc.name = [NSString stringWithFormat:@"%@ - %ld", curChore.name, curChore.Credit];
+    tdvc.date = [NSString stringWithFormat:@"Due on %@.", self.sections[indexPath.section]];
+    if (curChore.finished){
+        tdvc.completed = @"The Task has been completed.";
+    }
+    else{
+        tdvc.completed = @"The Task hasn't been completed.";
+    }
+    tdvc.claimed = curChore.isClaimed;
+    if (curChore.personAssigned){
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            PFUser *user = (PFUser *)[curChore.personAssigned fetchIfNeeded];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                tdvc.person = [NSString stringWithFormat:@"Assigned to %@", user.username];
+                tdvc.AssignedTo.text = [NSString stringWithFormat:@"Assigned to %@", user.username];
+                [tdvc.view setNeedsDisplay];
+            });
+        });
+    }
+    UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:tdvc];
+    tdvc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_cancel)];
+    [self.navigationController presentViewController:nc animated:YES completion:NULL];
+}
+
 
 /*
 // Override to support conditional editing of the table view.
