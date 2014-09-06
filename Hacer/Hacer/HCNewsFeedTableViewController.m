@@ -131,9 +131,9 @@
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         });
     });
-    cell.checkButton.layer.cornerRadius = 5;
+    cell.checkButton.layer.cornerRadius = 15;
     cell.checkButton.layer.masksToBounds = YES;
-    cell.profilePic.layer.cornerRadius = 5;
+    cell.profilePic.layer.cornerRadius = 15;
     cell.profilePic.layer.masksToBounds = YES;
     // Configure the cell...
     return cell;

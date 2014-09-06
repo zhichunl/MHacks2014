@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [FBProfilePictureView class];
     [Chore registerSubclass];
     [Household registerSubclass];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
