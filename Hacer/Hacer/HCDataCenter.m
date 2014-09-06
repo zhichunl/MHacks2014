@@ -115,6 +115,24 @@
         return @[PFUser.currentUser];
     }
 }
+-(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate{
+    PFObject *user = PFUser.currentUser;
+    NSInteger weeklyQuota = user[@"weeklyQuota"];
+    NSInteger accuCredit = user[@"accuQuota"];
+    NSInteger earnedQuota = 0;
+    NSString *userId = user[@"objectId"];
+    NSString *userName = user[@"username"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Chore"];
+    [query whereKey:@"personAssigned" equalTo:userId];
+    NSArray *chores = [query findObjects];
+    [query whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: false]];
+    NSArray *finished = [query findObjects];
+    [query whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: true]];
+    NSArray *to_do = [query findObjects];
+    for (Chore* c in finished){
+        earnedQuota = earnedQuota + (NSInteger)c[@"Credit"];
+    }
+}
 
 -(void)saveTask:(HCNewChoreViewController *)ncvc{
     Chore* newChore = [Chore object];

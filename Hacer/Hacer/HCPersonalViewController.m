@@ -23,8 +23,7 @@
     return self;
 }
 
--(void)newsFeedDataFetched:(NSMutableDictionary *)data{
-    PFQuery *uQuery = [PFQuery queryWithClassName:@"User"];
+-(void)personalDataFetched:(NSMutableDictionary *)data{
     
 }
 

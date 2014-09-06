@@ -11,16 +11,22 @@
 #import "HCNewChoreViewController.h"
 
 @protocol HCNewsFeedDelegate;
+@protocol HCPersonalDelegate;
 
 @interface HCDataCenter : NSObject
 +(instancetype)sharedCenter;
 -(void)registerUser:(id<FBGraphUser>)user;
 -(void)loginUser:(id<FBGraphUser>)user;
 -(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>) delegate;
+-(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate;
 -(NSArray *)getPeopleInHouse;
 -(void)saveTask: (HCNewChoreViewController *)ncvc;
 @end
 
 @protocol HCNewsFeedDelegate <NSObject>
 -(void)newsFeedDataFetched: (NSMutableDictionary *)data;
+@end
+
+@protocol HCPersonalDelegate <NSObject>
+-(void)personalDataFetched:(NSMutableDictionary *)data;
 @end
