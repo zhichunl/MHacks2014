@@ -60,6 +60,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    self.view.backgroundColor = background;
     self.dataDict = [NSMutableDictionary dictionary];
     self.sections = [NSMutableArray array];
     UINib *nib = [UINib nibWithNibName:@"HCNewsFeedTableViewCell" bundle:nil];
@@ -154,12 +156,19 @@
     else{
         [cell.checkButton setBackgroundImage:[UIImage imageNamed:@"heart-empty.png"] forState:UIControlStateNormal];
     }
+    cell.layer.cornerRadius = 10;
     cell.delegate = self;
     cell.path = indexPath;
     cell.checkButton.layer.cornerRadius = 5;
     cell.checkButton.layer.masksToBounds = YES;
     cell.profilePic.layer.cornerRadius = 15;
     cell.profilePic.layer.masksToBounds = YES;
+    UIColor *layer = [UIColor colorWithRed:216/255.f green:216/255.f blue:216/255.f alpha:90/255.f];
+    cell.backgroundColor = layer;
+    cell.taskName.font = [UIFont fontWithName:@"Chalkboard SE Bold" size:17.0f];
+    cell.taskName.textColor = [UIColor whiteColor];
+    cell.valueLabel.font = [UIFont fontWithName:@"Chalkboard SE Bold" size:17.0f];
+    cell.valueLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 

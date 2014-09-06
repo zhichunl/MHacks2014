@@ -26,10 +26,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    UIColor *layer = [UIColor colorWithRed:216/255.f green:216/255.f blue:216/255.f alpha:90/255.f];
+    self.view.backgroundColor = background;
     self.NameAndValue.text = self.name;
-    self.NameAndValue.font = [UIFont fontWithName:@"Helvetica" size:17.0f];
+    self.NameAndValue.textColor = [UIColor whiteColor];
+    self.NameAndValue.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
+    self.NameAndValue.layer.cornerRadius = 5;
+    self.NameAndValue.backgroundColor = layer;
     self.dueDate.text = self.date;
+    self.dueDate.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
     self.AssignedTo.text = self.person;
+    self.AssignedTo.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
+    self.finished.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
     self.finished.text = self.completed;
     if (!self.claimed){
         self.claimButton.alpha = 1.0;
