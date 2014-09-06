@@ -33,6 +33,7 @@
     self.chores.editable = YES;
     self.chores.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:17];
     self.chores.editable = NO;
+    [self.view setNeedsDisplay];
 }
 
 - (void)viewDidLoad
@@ -43,6 +44,10 @@
     self.view.backgroundColor = background;
     [[HCDataCenter sharedCenter] getPersonalInfo:self];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [[HCDataCenter sharedCenter] getPersonalInfo:self];
 }
 
 - (void)didReceiveMemoryWarning

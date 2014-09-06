@@ -101,6 +101,16 @@
 }
 
 -(void)_saveTask{
+    if ([self.ncvc.nameField.text length] <= 0){
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please enter a name!" message:@"" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+        [message show];
+        return;
+    }
+    else if ([self.ncvc.valueField.text length] <= 0){
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please enter a credit value!" message:@"" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+        [message show];
+        return;
+    }
     [MBProgressHUD showHUDAddedTo:self.ncvc.view animated:YES];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
