@@ -24,6 +24,7 @@
 }
 
 -(void)newsFeedDataFetched:(NSMutableDictionary *)data{
+    PFQuery *uQuery = [PFQuery queryWithClassName:@"User"];
     
 }
 
