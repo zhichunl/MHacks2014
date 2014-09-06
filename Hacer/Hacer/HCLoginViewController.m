@@ -54,26 +54,22 @@
     HCSettingsViewController *svc = [[HCSettingsViewController alloc] init];
     svc.tabBarItem.title = @"Settings";
     HCPersonalViewController *pvc = [[HCPersonalViewController alloc] init];
-    pvc.tabBarItem.title = @"Personal";
     UINavigationController *pnc = [[UINavigationController alloc] initWithRootViewController:pvc];
-    pnc.tabBarItem.title = @"Personal";
+    pvc.tabBarItem.title = @"Personal";
     HCNewsFeedTableViewController *ftvc = [[HCNewsFeedTableViewController alloc] init];
     UINavigationController *fnc = [[UINavigationController alloc] initWithRootViewController:ftvc];
-    fnc.tabBarItem.title = @"News Feed";
+    ftvc.tabBarItem.title = @"News Feed";
     HCHouseholdTableViewController *htvc = [[HCHouseholdTableViewController alloc] init];
     UINavigationController *hnc = [[UINavigationController alloc] initWithRootViewController:htvc];
-    hnc.tabBarItem.title = @"Household";
-    UITabBarController *tbc = [[UITabBarController alloc] init];
-    tbc.viewControllers = @[fnc, hnc, pnc, svc];
-    [self.navigationController presentViewController:tbc animated:YES completion:NULL];
+    htvc.tabBarItem.title = @"Weekly Summary";
     UIImage *setting = [UIImage imageNamed:@"settings-3.png"];
     UIImage *setting_pressed = [UIImage imageNamed:@"settings-3_pressed.png"];
     UIImage *personal = [UIImage imageNamed:@"users.png"];
     UIImage *personal_pressed = [UIImage imageNamed:@"users_pressed.png"];
     UIImage *news = [UIImage imageNamed:@"home.png"];
     UIImage *news_pressed = [UIImage imageNamed:@"home_pressed.png"];
-    UIImage *house = [UIImage imageNamed:@"time.png"];
-    UIImage *house_pressed = [UIImage imageNamed:@"time_pressed.png"];
+    UIImage *house = [UIImage imageNamed:@"timeline.png"];
+    UIImage *house_pressed = [UIImage imageNamed:@"timeline_pressed.png"];
     svc.tabBarItem.image = setting;
     svc.tabBarItem.selectedImage = setting_pressed;
     pvc.tabBarItem.image = personal;
@@ -82,6 +78,9 @@
     ftvc.tabBarItem.selectedImage = news_pressed;
     htvc.tabBarItem.image = house;
     htvc.tabBarItem.selectedImage = house_pressed;
+    UITabBarController *tbc = [[UITabBarController alloc] init];
+    tbc.viewControllers = @[fnc, hnc, pnc, svc];
+    [self.navigationController presentViewController:tbc animated:YES completion:NULL];
 }
 
 
