@@ -60,7 +60,7 @@
                 Chore* cf = (Chore *)[c fetchIfNeeded];
                 NSDate *dueDate = cf.dueDate;
                 NSDateFormatter *dformat = [[NSDateFormatter alloc]init];
-                [dformat setDateFormat:@"yyyy-MM-dd"];
+                [dformat setDateFormat:@"MM/dd/yyyy"];
                 NSString *due = [dformat stringFromDate:dueDate];
                 if ([choresF objectForKey:due] == nil){
                     choresF[due] = @[cf];
@@ -109,7 +109,12 @@
         PFQuery *query = [PFUser query];
         [query whereKey:@"household" equalTo:curHouse];
         NSArray *people = [query findObjects];
-        return people;
+        NSMutableArray *pf = [NSMutableArray array];
+        for (PFUser *p in people){
+            PFUser *pk = (PFUser *)[p fetchIfNeeded];
+            [pf addObject:pk];
+        }
+        return [pf copy];
     }
     else{
         return @[PFUser.currentUser];
@@ -166,6 +171,9 @@
     else{
         newChore.isClaimed = YES;
         newChore.personAssigned = ncvc.people[count];
+    }
+    if ((PFUser.currentUser)[@"household"]){
+        newChore.HH = (PFUser.currentUser)[@"household"];
     }
     newChore.Credit = [ncvc.valueField.text intValue];
     [newChore save];

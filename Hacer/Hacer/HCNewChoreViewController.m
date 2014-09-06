@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"New Task";
-    self.people = [NSMutableArray array];
+    self.people = [NSArray array];
     [self findRoommates];
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
@@ -39,9 +39,9 @@
 -(void)findRoommates{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        self.people = [[[HCDataCenter sharedCenter] getPeopleInHouse] mutableCopy];
+        self.people = [[HCDataCenter sharedCenter] getPeopleInHouse];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.view setNeedsDisplay];
+            [self.pickerView reloadAllComponents];
         });
     });
 }

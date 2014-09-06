@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *noOtherPeople;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicked;
-@property NSMutableArray *people;
+@property NSArray *people;
 @end

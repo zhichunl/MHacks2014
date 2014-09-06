@@ -188,6 +188,10 @@
     if (curChore.finished == YES){
         return;
     }
+    HCNewsFeedTableViewCell *cell = (HCNewsFeedTableViewCell *)[self.tableView cellForRowAtIndexPath:path];
+    if (cell.profilePic.profileID != (PFUser.currentUser)[@"facebookID"]){
+        return;
+    }
     curChore.finished = YES;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [curChore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
