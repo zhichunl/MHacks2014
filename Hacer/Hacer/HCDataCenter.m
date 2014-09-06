@@ -117,16 +117,16 @@
 }
 -(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate{
     PFObject *user = PFUser.currentUser;
-    NSUInteger weeklyQuota = user[@"weeklyQuota"];
-    NSUInteger accuCredit = user[@"accuQuota"];
+    NSInteger weeklyQuota = [user[@"weeklyQuota"] integerValue];
+    NSUInteger accuCredit = [user[@"accuQuota"] integerValue];
     NSUInteger earnedQuota = 0;
     NSString *userName = user[@"username"];
     PFQuery *fquery = [Chore query];
     [fquery whereKey:@"personAssigned" equalTo:user];
     [fquery whereKey:@"finished" equalTo:[[NSNumber alloc] initWithBool: true]];
     NSArray *finished = [fquery findObjects];
-    for (Chore* c in finished ){
-        earnedQuota = earnedQuota + (NSUInteger)c[@"Credit"];
+    for (PFObject* c in finished ){
+        earnedQuota = earnedQuota + [c[@"Credit"] integerValue];
     }
     PFQuery *tquery = [PFQuery queryWithClassName:@"Chore"];
     [tquery whereKey:@"personAssigned" equalTo:user];
