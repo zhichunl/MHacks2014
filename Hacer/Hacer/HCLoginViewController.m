@@ -48,9 +48,9 @@
 }
 
 //the action after user login.
-//-(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
-//    [self _loadAlertView];
-//}
+-(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
+   
+}
 
 
 -(void)viewWillAppear:(BOOL)animated{
