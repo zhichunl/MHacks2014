@@ -23,6 +23,10 @@
     return self;
 }
 
+-(void)newsFeedDataFetched:(NSMutableDictionary *)data{
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
