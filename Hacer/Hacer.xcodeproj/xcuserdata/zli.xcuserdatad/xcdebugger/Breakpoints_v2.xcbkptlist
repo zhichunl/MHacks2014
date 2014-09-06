@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hacer/HCLoginViewController.m"
-            timestampString = "431679324.327422"
+            filePath = "Hacer/HCDataCenter.m"
+            timestampString = "431682700.347508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "-loginViewFetchedUserInfo:user:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hacer/HCLoginViewController.m"
-            timestampString = "431679649.994432"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-loginViewShowingLoggedInUser:"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-loginUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

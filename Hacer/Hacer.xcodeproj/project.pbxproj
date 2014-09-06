@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */; };
 		0DB74CEE19BADB64008E7CC1 /* HCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */; };
+		5858BF0D19BAEFF600E0DD5E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */; };
 		585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ECE7B19BAD32600072C39 /* HCDataCenter.m */; };
 		58E2DAC519BAC6CC0047444E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC419BAC6CC0047444E /* Foundation.framework */; };
 		58E2DAC719BAC6CC0047444E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC619BAC6CC0047444E /* CoreGraphics.framework */; };
@@ -33,7 +34,6 @@
 		58E2DB0619BAC8A80047444E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0519BAC8A80047444E /* Security.framework */; };
 		58E2DB0819BAC8B10047444E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0719BAC8B10047444E /* StoreKit.framework */; };
 		58E2DB0A19BAC8CA0047444E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0919BAC8CA0047444E /* SystemConfiguration.framework */; };
-		58E2DB0C19BACD550047444E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DB0B19BACD550047444E /* FacebookSDK.framework */; };
 		58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */; };
 		58E2DB1219BACFAD0047444E /* HCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */; };
 /* End PBXBuildFile section */
@@ -52,6 +52,7 @@
 		0DB74CEA19BADB64008E7CC1 /* HCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSettingsViewController.h; sourceTree = "<group>"; };
 		0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSettingsViewController.m; sourceTree = "<group>"; };
 		0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCSettingsViewController.xib; sourceTree = "<group>"; };
+		5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		585ECE7B19BAD32600072C39 /* HCDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCDataCenter.m; sourceTree = "<group>"; };
 		585ECE7D19BAD32F00072C39 /* HCDataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCDataCenter.h; sourceTree = "<group>"; };
 		58E2DAC119BAC6CC0047444E /* Hacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +82,6 @@
 		58E2DB0519BAC8A80047444E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58E2DB0719BAC8B10047444E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		58E2DB0919BAC8CA0047444E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		58E2DB0B19BACD550047444E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		58E2DB0E19BACFAD0047444E /* HCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCLoginViewController.h; sourceTree = "<group>"; };
 		58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCLoginViewController.m; sourceTree = "<group>"; };
 		58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCLoginViewController.xib; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 				58E2DAFA19BAC8660047444E /* AudioToolbox.framework in Frameworks */,
 				58E2DAC719BAC6CC0047444E /* CoreGraphics.framework in Frameworks */,
 				58E2DAC919BAC6CC0047444E /* UIKit.framework in Frameworks */,
-				58E2DB0C19BACD550047444E /* FacebookSDK.framework in Frameworks */,
+				5858BF0D19BAEFF600E0DD5E /* FacebookSDK.framework in Frameworks */,
 				58E2DAC519BAC6CC0047444E /* Foundation.framework in Frameworks */,
 				58E2DAF619BAC8200047444E /* Bolts.framework in Frameworks */,
 				58E2DAF819BAC82B0047444E /* Parse.framework in Frameworks */,
@@ -126,8 +126,8 @@
 		585ECE7E19BAD33200072C39 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				585ECE7B19BAD32600072C39 /* HCDataCenter.m */,
 				585ECE7D19BAD32F00072C39 /* HCDataCenter.h */,
+				585ECE7B19BAD32600072C39 /* HCDataCenter.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 		58E2DAC319BAC6CC0047444E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				58E2DB0B19BACD550047444E /* FacebookSDK.framework */,
+				5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */,
 				58E2DB0919BAC8CA0047444E /* SystemConfiguration.framework */,
 				58E2DB0719BAC8B10047444E /* StoreKit.framework */,
 				58E2DB0519BAC8A80047444E /* Security.framework */,
@@ -288,6 +288,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				he,
 			);
 			mainGroup = 58E2DAB819BAC6CC0047444E;
 			productRefGroup = 58E2DAC219BAC6CC0047444E /* Products */;
@@ -451,6 +452,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FacebookSDK",
+					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hacer/Hacer-Prefix.pch";
@@ -468,6 +471,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FacebookSDK",
+					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hacer/Hacer-Prefix.pch";

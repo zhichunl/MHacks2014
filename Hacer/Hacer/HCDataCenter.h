@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface HCDataCenter : NSObject
-
++(instancetype)sharedCenter;
+-(void)registerUser:(id<FBGraphUser>)user;
+-(void)loginUser:(id<FBGraphUser>)user;
 @end

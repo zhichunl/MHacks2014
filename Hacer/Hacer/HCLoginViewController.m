@@ -10,10 +10,10 @@
 #import "HCLoginViewController.h"
 #import "Parse/Parse.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "HCDataCenter.h"
 
 @interface HCLoginViewController ()<FBLoginViewDelegate>
 @property (atomic, assign) BOOL registered;
-@property (strong, nonatomic) UIAlertView *message;
 @end
 
 @implementation HCLoginViewController
@@ -30,27 +30,29 @@
 //fetching user info to upload to parse
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    NSLog(@"loginViewFetchedUserInfo");
     if (!self.registered){
         PFQuery *forUser = [PFUser query];
-        [forUser whereKey:@"profileID" equalTo:user.objectID];
+        [forUser whereKey:@"facebookID" equalTo:user.objectID];
         [forUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
             if ([objects count] == 0){
-                //[[FBUDataCenter sharedCenter] registerUser:user];
+                [[HCDataCenter sharedCenter] registerUser:user];
             }
             else {
-                //[[FBUDataCenter sharedCenter] loginUser:user];
+                [[HCDataCenter sharedCenter] loginUser:user];
             }
         }];
         self.registered = YES;
     }
-    //UIBarButtonItem* next = [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(_loadAlertView)];
-    //self.navigationItem.rightBarButtonItem = next;
 }
 
 //the action after user login.
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
    
+}
+
+- (void)loginView:(FBLoginView *)loginView
+      handleError:(NSError *)error{
+    
 }
 
 
