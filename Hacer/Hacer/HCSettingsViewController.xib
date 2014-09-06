@@ -17,14 +17,5 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <tabBar contentMode="scaleToFill" id="vNA-aP-Q6k">
-            <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <items>
-                <tabBarItem systemItem="favorites" id="Pyd-tQ-xc7"/>
-                <tabBarItem systemItem="more" id="ZTY-5r-Cdl"/>
-            </items>
-        </tabBar>
     </objects>
 </document>
