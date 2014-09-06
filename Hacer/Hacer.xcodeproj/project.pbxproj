@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */; };
+		0DB74CEE19BADB64008E7CC1 /* HCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */; };
 		585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ECE7B19BAD32600072C39 /* HCDataCenter.m */; };
 		58E2DAC519BAC6CC0047444E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC419BAC6CC0047444E /* Foundation.framework */; };
 		58E2DAC719BAC6CC0047444E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E2DAC619BAC6CC0047444E /* CoreGraphics.framework */; };
@@ -47,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DB74CEA19BADB64008E7CC1 /* HCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSettingsViewController.h; sourceTree = "<group>"; };
+		0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSettingsViewController.m; sourceTree = "<group>"; };
+		0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCSettingsViewController.xib; sourceTree = "<group>"; };
 		585ECE7B19BAD32600072C39 /* HCDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCDataCenter.m; sourceTree = "<group>"; };
 		585ECE7D19BAD32F00072C39 /* HCDataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCDataCenter.h; sourceTree = "<group>"; };
 		58E2DAC119BAC6CC0047444E /* Hacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +222,9 @@
 				58E2DB0E19BACFAD0047444E /* HCLoginViewController.h */,
 				58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */,
 				58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */,
+				0DB74CEA19BADB64008E7CC1 /* HCSettingsViewController.h */,
+				0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */,
+				0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -297,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB74CEE19BADB64008E7CC1 /* HCSettingsViewController.xib in Resources */,
 				58E2DACF19BAC6CC0047444E /* InfoPlist.strings in Resources */,
 				58E2DAD719BAC6CC0047444E /* Images.xcassets in Resources */,
 				58E2DB1219BACFAD0047444E /* HCLoginViewController.xib in Resources */,
@@ -321,6 +330,7 @@
 				58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */,
 				58E2DAD119BAC6CC0047444E /* main.m in Sources */,
 				58E2DAD519BAC6CC0047444E /* HCAppDelegate.m in Sources */,
+				0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */,
 				585ECE7C19BAD32600072C39 /* HCDataCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
