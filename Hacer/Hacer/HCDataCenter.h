@@ -35,6 +35,7 @@
 //-(void)setupSettings:(id<HCSettingsDelegate>)delegate;
 -(void)fetchAllTasksbyPeople:(id<HCHouseholdDelegate>)delegate;
 -(void)fetchOverDueTasksForCurrentUser:(id<HCFacebookPostingDelegate>)delegate;
+-(void)updateHousehold:(Household*)household;
 @end
 
 @protocol HCNewsFeedDelegate <NSObject>

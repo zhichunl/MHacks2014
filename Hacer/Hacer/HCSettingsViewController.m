@@ -95,11 +95,26 @@
 
 -(void)addPerson
 {
-    FBFriendPickerViewController *controller = [[FBFriendPickerViewController alloc] init];
-    controller.delegate = self;
-    controller.title = @"Pick Friends to add";
-    [controller loadData];
-    [controller presentModallyFromViewController:self animated:YES handler:nil];
+    if([self.household.name isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter household" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else {
+        FBFriendPickerViewController *controller = [[FBFriendPickerViewController alloc] init];
+        controller.delegate = self;
+        controller.title = @"Pick Friends to add";
+        [controller loadData];
+        [controller presentModallyFromViewController:self animated:YES handler:nil];
+    }
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if(!self.household) {
+        self.household = [[Household alloc] init];
+    }
+    self.household.name = textView.text;
+    [self.dataCenter updateHousehold:self.household];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -129,8 +144,6 @@
                     NSLog(@"Error: %@ %@", error, [error userInfo]);
                 }
             }];
-            
-            self.peopleList.text = [NSString stringWithFormat:@"%@, \n, %@", self.peopleList.text,(NSString*)user.name];
             NSLog(@"Added person to empty array");
             return;
         }
@@ -156,11 +169,6 @@
                         NSLog(@"Error: %@ %@", error, [error userInfo]);
                     }
                 }];
-
-                self.peopleList.text = [self.peopleList.text stringByAppendingString:@"\n"];
-                self.peopleList.text = [self.peopleList.text stringByAppendingString:(NSString*)fbUser.name];
-                self.peopleList.text = [self.peopleList.text stringByAppendingString:@","];
-                
                 
             }
         }
@@ -173,6 +181,12 @@
 - (void)facebookViewControllerDoneWasPressed:(id)sender {
     FBFriendPickerViewController *friendPickerController =
     (FBFriendPickerViewController*)sender;
+    
+    for(id<FBGraphUser> fbUser in friendPickerController.selection)
+    {
+        [self.peopleList.text stringByAppendingString:[NSString stringWithFormat:@"%@ \n", (NSString*)fbUser.name]];
+    }
+    
     NSLog(@"Done clicked");
     // Dismiss the friend picker
     [[friendPickerController presentingViewController] dismissModalViewControllerAnimated:YES];
@@ -206,6 +220,12 @@
 
     dispatch_async(queue, ^{
         NSString *name = PFUser.currentUser.username;
+        if([self.hhName.text isEqualToString:@""]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter household" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+            [alert show];
+            return;
+        }
+        self.household.name = self.hhName.text;
         [self.household save];
         for(PFUser* person in self.people) {
             person[@"household"] = self.household;
