@@ -34,23 +34,21 @@
 //fetching user info to upload to parse
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
-    if (!self.registered){
-        PFQuery *forUser = [PFUser query];
-        [forUser whereKey:@"facebookID" equalTo:user.objectID];
-        [forUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-            if ([objects count] == 0){
-                [[HCDataCenter sharedCenter] registerUser:user];
-            }
-            else {
-                [[HCDataCenter sharedCenter] loginUser:user];
-            }
-        }];
-        self.registered = YES;
-    }
+    PFQuery *forUser = [PFUser query];
+    [forUser whereKey:@"facebookID" equalTo:user.objectID];
+    __weak HCLoginViewController *weaksel = self;
+    [forUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if ([objects count] == 0){
+            [[HCDataCenter sharedCenter] registerUser:user];
+        }
+        else {
+            [[HCDataCenter sharedCenter] loginUser:user];
+        }
+        [weaksel loadOtherView];
+    }];
 }
 
-//the action after user login.
--(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
+-(void)loadOtherView{
     HCSettingsViewController *svc = [[HCSettingsViewController alloc] init];
     UINavigationController *snc = [[UINavigationController alloc] initWithRootViewController:svc];
     svc.tabBarItem.title = @"Settings";
@@ -81,7 +79,7 @@
     htvc.tabBarItem.selectedImage = house_pressed;
     UITabBarController *tbc = [[UITabBarController alloc] init];
     tbc.viewControllers = @[fnc, hnc, pnc, snc];
-    [self.navigationController presentViewController:tbc animated:YES completion:NULL];
+    [self presentViewController:tbc animated:YES completion:NULL];
 }
 
 
@@ -100,11 +98,13 @@
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 3*self.view.bounds.size.height/5);
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"logopg.png"]];
     self.view.backgroundColor = background;
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
+    imageView.frame = CGRectMake(7*self.view.bounds.size.width/20, 8*self.view.bounds.size.width/20, 3*self.view.bounds.size.width/10, 3*self.view.bounds.size.width/10);
+    [self.view addSubview:imageView];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [self.view addSubview:loginView];
-    self.registered = NO;
 }
 
 - (void)didReceiveMemoryWarning
