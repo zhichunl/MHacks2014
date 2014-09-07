@@ -8,10 +8,9 @@
             <connections>
                 <outlet property="AssignedTo" destination="hPL-7G-PN8" id="LpI-0q-jNB"/>
                 <outlet property="NameAndValue" destination="MyJ-kC-pYY" id="KNH-ea-K1c"/>
-                <outlet property="claimButton" destination="Vef-kL-vBW" id="LBu-ia-27L"/>
                 <outlet property="dueDate" destination="9LO-8H-YOA" id="NNb-Wx-lCu"/>
                 <outlet property="finished" destination="jum-UW-1B1" id="93x-t7-xmS"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="XgL-zq-n4y"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,13 +32,6 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vef-kL-vBW">
-                    <rect key="frame" x="117" y="448" width="86" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Claim It!">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jum-UW-1B1">
                     <rect key="frame" x="20" y="336" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

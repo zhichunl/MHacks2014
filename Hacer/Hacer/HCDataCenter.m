@@ -180,32 +180,6 @@
     });
 }
 
--(void)setupSettings:(id<HCSettingsDelegate>)delegate
-{
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        PFUser *currUser = [PFUser currentUser];
-        if (currUser) {
-            NSLog(@"Settings viewDidLoad");
-            if(currUser[@"HH"]) {
-                //Household* currHousehold = currUser[@"HH"];
-                Household* currHouseholdFetch = [[Household alloc]init];
-                currHouseholdFetch.name = currUser[@"HH"];
-                if (currHouseholdFetch) {
-                    PFQuery *query = [PFUser query];
-                    [query whereKey:@"HH" equalTo:currHouseholdFetch];
-                    NSMutableArray *people = (NSMutableArray*)[query findObjects];
-                    [delegate didFetchSettingsData:currHouseholdFetch people: people];
-                }
-            }
-            else {
-                [delegate didFetchSettingsData:nil people: nil];
-            }
-        }
-    });
-
-}
-
 -(void)fetchAllTasksbyPeople:(id<HCHouseholdDelegate>)delegate{
     NSArray* people = [self getPeopleInHouse];
     NSMutableDictionary *newDict = [NSMutableDictionary dictionary];

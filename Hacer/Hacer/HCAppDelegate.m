@@ -43,6 +43,7 @@
 -(void)didFetchOverDueTasks:(NSMutableArray*)data {
     if([data count] > 0) {
         HCFacebookPostHandler *facebookPostHandler = [[HCFacebookPostHandler alloc] init];
+        NSLog(@"Posting status for overdue tasks");
         [facebookPostHandler updateCurrentUserStatusWithString:@"Hi, I don't do my chores because I'm lazy."];
     }
 }

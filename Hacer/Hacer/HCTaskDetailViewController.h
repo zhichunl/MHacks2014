@@ -18,6 +18,6 @@
 @property (strong, nonatomic) NSString *person;
 @property (weak, nonatomic) IBOutlet UILabel *finished;
 @property (strong, nonatomic) NSString *completed;
-@property (weak, nonatomic) IBOutlet UIButton *claimButton;
+-(void)claimButtonPressed;
 @property BOOL claimed;
 @end

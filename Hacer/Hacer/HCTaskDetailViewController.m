@@ -9,7 +9,7 @@
 #import "HCTaskDetailViewController.h"
 
 @interface HCTaskDetailViewController ()
-
+@property (strong, nonatomic) UIButton *button;
 @end
 
 @implementation HCTaskDetailViewController
@@ -23,8 +23,18 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
+    self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.button addTarget:self
+               action:@selector(claimButtonPressed)forControlEvents:UIControlEventTouchUpInside];
+    [self.button setTitle:@"Claim it!" forState:UIControlStateNormal];
+    
+    self.button.frame = CGRectMake(137.0, 459.0, 56.0, 30.0);
+    
+    [self.view addSubview:self.button];
+    
     [super viewDidLoad];
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     UIColor *layer = [UIColor colorWithRed:216/255.f green:216/255.f blue:216/255.f alpha:90/255.f];
@@ -41,13 +51,17 @@
     self.finished.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
     self.finished.text = self.completed;
     if (!self.claimed){
-        self.claimButton.alpha = 1.0;
+        //self.button.alpha = 1.0;
         self.AssignedTo.text = @"Not assigned to anyone!";
     }
     else{
-        self.claimButton.alpha = 0.0;
+        //self.button.alpha = 0.0;
     }
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)claimButtonPressed {
+    NSLog(@"Button pressed");
 }
 
 - (void)didReceiveMemoryWarning

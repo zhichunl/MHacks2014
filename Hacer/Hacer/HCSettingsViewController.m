@@ -10,7 +10,7 @@
 #import "HCDataCenter.h"
 #import "Parse/Parse.h"
 
-@interface HCSettingsViewController() <UITextFieldDelegate, HCSettingsDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
+@interface HCSettingsViewController() <UITextFieldDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) Household *household;
 @property (strong, nonatomic) NSMutableArray *people;
@@ -27,36 +27,53 @@
     }
     return self;
 }
--(void)didFetchSettingsData:(Household*)household people:(NSMutableArray*)people {
-    self.household = household;
-    if(people != nil) {
-        self.people = people;
-    }
-    else
-    {
-        self.people = [[NSMutableArray alloc] init];
-    }
-}
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Setting";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPerson)];
+    [self initializeView];
+    [self initalizeData];
+}
+
+-(void)initalizeData {
+    self.dataCenter = [HCDataCenter sharedCenter];
+    for(PFUser* person in [self.dataCenter getPeopleInHouse]){
+        PFUser *pk = (PFUser *)[person fetchIfNeeded];
+        [self.people addObject:pk];
+        
+        if(PFUser.currentUser[@"weeklyQuota"]){
+            self.creditQuota.text = [(NSNumber*)PFUser.currentUser[@"weeklyQuota"]stringValue];
+        }
+    }
+
+    Household* household = PFUser.currentUser[@"household"];
+    if(household) {
+        Household *h = (Household *)[household fetchIfNeeded];
+        self.hhName.text = (NSString*)h.name;
+        self.household = h;
+    }
+}
+
+-(void)initializeView {
+    self.navigationItem.title = @"Settings";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPerson)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(updateData)];
+
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     UIColor *layer = [UIColor colorWithRed:216/255.f green:216/255.f blue:216/255.f alpha:90/255.f];
     self.view.backgroundColor = background;
     self.peopleList.textColor = [UIColor whiteColor];
     self.peopleList.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
-    self.peopleList.layer.cornerRadius = 5;
+    self.peopleList.layer.cornerRadius = 4;
     self.peopleList.backgroundColor = layer;
-    self.dataCenter = [HCDataCenter sharedCenter];
-    [self.dataCenter setupSettings:self];
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 -(void)addPerson
 {
     FBFriendPickerViewController *controller = [[FBFriendPickerViewController alloc] init];
@@ -65,6 +82,10 @@
     controller.title = @"Pick Friends to add";
     [controller loadData];
     [controller presentModallyFromViewController:self animated:YES handler:nil];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 /*
@@ -118,13 +139,11 @@
                     }
                 }];
 
+                self.peopleList.text = [self.peopleList.text stringByAppendingString:@"\n"];
+                self.peopleList.text = [self.peopleList.text stringByAppendingString:(NSString*)fbUser.name];
+                self.peopleList.text = [self.peopleList.text stringByAppendingString:@","];
                 
-                if([self.peopleList.text isEqualToString:@""]) {
-                    self.peopleList.text = (NSString*)fbUser.name;
-                }
-                else {
-                    self.peopleList.text = [NSString stringWithFormat:@"%@, \n %@", self.peopleList.text,(NSString*)fbUser.name];
-                }
+                
             }
         }
     }
