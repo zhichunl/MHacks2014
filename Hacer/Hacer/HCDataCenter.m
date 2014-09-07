@@ -68,6 +68,10 @@
                 else{
                     NSMutableArray *array = [choresF[due] mutableCopy];
                     [array addObject:cf];
+                    [array sortUsingComparator:^NSComparisonResult(Chore *c1, Chore *c2) {
+                        return [c1.dueDate compare:c2.dueDate];
+                    }];
+                    array = [[[array reverseObjectEnumerator] allObjects] mutableCopy];
                     choresF[due] = array;
                 }
             }
@@ -91,6 +95,10 @@
                 else{
                     NSMutableArray *array = [choresF[due] mutableCopy];
                     [array addObject:cf];
+                    [array sortUsingComparator:^NSComparisonResult(Chore *c1, Chore *c2) {
+                        return [c1.dueDate compare:c2.dueDate];
+                    }];
+                    array = [[[array reverseObjectEnumerator] allObjects] mutableCopy];
                     choresF[due] = array;
                 }
             }

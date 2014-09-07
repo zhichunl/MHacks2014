@@ -60,7 +60,7 @@
     ftvc.tabBarItem.title = @"News Feed";
     HCHouseholdTableViewController *htvc = [[HCHouseholdTableViewController alloc] init];
     UINavigationController *hnc = [[UINavigationController alloc] initWithRootViewController:htvc];
-    htvc.tabBarItem.title = @"Weekly Summary";
+    htvc.tabBarItem.title = @"Household Summary";
     UIImage *setting = [UIImage imageNamed:@"settings-3.png"];
     UIImage *setting_pressed = [UIImage imageNamed:@"settings-3_pressed.png"];
     UIImage *personal = [UIImage imageNamed:@"users.png"];

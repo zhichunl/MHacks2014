@@ -7,6 +7,7 @@
 //
 
 #import "HCTaskDetailViewController.h"
+#import "MBProgressHUD.h"
 
 @interface HCTaskDetailViewController ()
 @property (strong, nonatomic) UIButton *button;
@@ -61,7 +62,13 @@
 }
 
 -(void)claimButtonPressed {
-    NSLog(@"Button pressed");
+    self.curChore.personAssigned = PFUser.currentUser;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.curChore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded){
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
