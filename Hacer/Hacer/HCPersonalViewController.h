@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HCPersonalViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigation;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *earnedCredit;
 @property (weak, nonatomic) IBOutlet UILabel *accuCredit;
