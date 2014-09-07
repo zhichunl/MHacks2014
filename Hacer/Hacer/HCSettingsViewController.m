@@ -10,7 +10,7 @@
 #import "HCDataCenter.h"
 #import "Parse/Parse.h"
 
-@interface HCSettingsViewController() <HCSettingsDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
+@interface HCSettingsViewController() <UITextFieldDelegate, HCSettingsDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) Household *household;
 @property (strong, nonatomic) NSMutableArray *people;
@@ -37,8 +37,11 @@
         self.people = [[NSMutableArray alloc] init];
     }
 }
-
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -158,6 +161,7 @@
     }
             return YES;
 }
+
 
 -(void)updateData {
     NSLog(@"%ld", [self.people count]);

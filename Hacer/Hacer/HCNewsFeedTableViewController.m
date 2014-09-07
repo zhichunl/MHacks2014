@@ -152,6 +152,7 @@
     // set taskTitle
     cell.taskName.text = curChore.name;
     NSInteger num = curChore.Credit;
+    cell.checkButton.enabled = YES;
     cell.valueLabel.text = [NSString stringWithFormat:@"%ld", (long)num];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
@@ -189,7 +190,7 @@
         return;
     }
     HCNewsFeedTableViewCell *cell = (HCNewsFeedTableViewCell *)[self.tableView cellForRowAtIndexPath:path];
-    if (cell.profilePic.profileID != (PFUser.currentUser)[@"facebookID"]){
+    if (![cell.profilePic.profileID isEqualToString:(PFUser.currentUser)[@"facebookID"]]){
         return;
     }
     curChore.finished = YES;

@@ -77,7 +77,7 @@
             });
         }
         else{
-            [query whereKey:@"personAssigned" equalTo:PFUser.currentUser];
+            [query whereKey:@"personAssigned" equalTo:[PFUser currentUser]];
             NSArray *chores = [query findObjects];
             NSMutableDictionary *choresF = [NSMutableDictionary dictionary];
             for (Chore* c in chores) {
@@ -99,8 +99,6 @@
                 [delegate newsFeedDataFetched:choresF];
             });
         }
-            
-        
     });
 }
 
