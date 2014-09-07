@@ -46,10 +46,7 @@
     self.NameAndValue.layer.cornerRadius = 5;
     self.NameAndValue.backgroundColor = layer;
     self.dueDate.text = self.date;
-    self.dueDate.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
     self.AssignedTo.text = self.person;
-    self.AssignedTo.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
-    self.finished.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
     self.finished.text = self.completed;
     if (!self.claimed){
         self.button.alpha = 1.0;

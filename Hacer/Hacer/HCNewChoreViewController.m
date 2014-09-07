@@ -27,12 +27,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+     UIColor *layer = [UIColor colorWithRed:216/255.f green:216/255.f blue:216/255.f alpha:90/255.f];
+    self.view.backgroundColor = background;
     self.navigationItem.title = @"New Task";
     self.people = [NSArray array];
     [self findRoommates];
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     [self.datePicked setMinimumDate: [NSDate date]];
+    self.noOtherPeople.textColor = [UIColor whiteColor];
+     self.noOtherPeople.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
+    self.pickerView.tintColor = [UIColor whiteColor];
+    self.datePicked.tintColor = [UIColor whiteColor];
+    self.pickerView.backgroundColor= layer;
+    self.datePicked.backgroundColor = layer;
     // Do any additional setup after loading the view from its nib.
 }
 

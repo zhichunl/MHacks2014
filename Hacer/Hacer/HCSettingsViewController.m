@@ -83,7 +83,7 @@
     self.view.backgroundColor = background;
     self.peopleList.textColor = [UIColor whiteColor];
     self.peopleList.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
-    self.peopleList.layer.cornerRadius = 4;
+    self.peopleList.layer.cornerRadius = 5;
     self.peopleList.backgroundColor = layer;
 }
 
