@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HCDataCenter.h"
 
-@interface HCLoginViewController : UIViewController
+@interface HCLoginViewController : UIViewController< HCFacebookPostingDelegate>
 
 @end

@@ -33,19 +33,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    HCDataCenter *dataCenter = [HCDataCenter sharedCenter];
-    [dataCenter fetchOverDueTasksForCurrentUser:self];
-    
     return YES;
-}
-
--(void)didFetchOverDueTasks:(NSMutableArray*)data {
-    if([data count] > 0) {
-        HCFacebookPostHandler *facebookPostHandler = [[HCFacebookPostHandler alloc] init];
-        NSLog(@"Posting status for overdue tasks");
-        [facebookPostHandler updateCurrentUserStatusWithString:@"Hi, I don't do my chores because I'm lazy."];
-    }
 }
 
 - (void)application:(UIApplication *)application

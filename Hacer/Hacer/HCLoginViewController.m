@@ -14,6 +14,7 @@
 #import "HCPersonalViewController.h"
 #import "HCNewsFeedTableViewController.h"
 #import "HCHouseholdTableViewController.h"
+#import "HCFacebookPostHandler.h"
 
 
 @interface HCLoginViewController ()<FBLoginViewDelegate>
@@ -37,16 +38,31 @@
     PFQuery *forUser = [PFUser query];
     [forUser whereKey:@"facebookID" equalTo:user.objectID];
     __weak HCLoginViewController *weaksel = self;
-    [forUser findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if ([objects count] == 0){
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSArray *obs = [forUser findObjects];
+        if ([obs count] == 0){
             [[HCDataCenter sharedCenter] registerUser:user];
         }
         else {
             [[HCDataCenter sharedCenter] loginUser:user];
         }
-        [weaksel loadOtherView];
-    }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            HCDataCenter *dataCenter = [HCDataCenter sharedCenter];
+            [dataCenter fetchOverDueTasksForCurrentUser:weaksel];
+            [weaksel loadOtherView];
+        });
+    });
 }
+
+-(void)didFetchOverDueTasks:(NSMutableArray*)data {
+    if([data count] > 0) {
+        HCFacebookPostHandler *facebookPostHandler = [[HCFacebookPostHandler alloc] init];
+        NSLog(@"Posting status for overdue tasks");
+        [facebookPostHandler updateCurrentUserStatusWithString:@"Hi, I don't do my chores because I'm lazy."];
+    }
+}
+
 
 -(void)loadOtherView{
     HCSettingsViewController *svc = [[HCSettingsViewController alloc] init];
@@ -93,7 +109,7 @@
     // Do any additional setup after loading the view from its nib.
     NSLog(@"ViewDidLoad Start");
     FBLoginView *loginView = [[FBLoginView alloc]initWithReadPermissions:
-                              @[@"public_profile", @"email", @"user_friends",@"publish_actions"]];
+                              @[@"public_profile", @"email", @"user_friends", @"publish_actions"]];
     loginView.delegate = self;
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 3*self.view.bounds.size.height/5);
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"logopg.png"]];
