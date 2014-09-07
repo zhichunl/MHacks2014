@@ -14,6 +14,7 @@
 @protocol HCNewsFeedDelegate;
 @protocol HCPersonalDelegate;
 @protocol HCSaveDelegate;
+@protocol HCFacebookPostingDelegate;
 
 @protocol HCSettingsDelegate <NSObject>
 -(void)didFetchSettingsData:(Household*)household people:(NSMutableArray*)people;
@@ -33,6 +34,7 @@
 -(void)saveTask: (HCNewChoreViewController *)ncvc del:(id<HCSaveDelegate>)delegate;
 -(void)setupSettings:(id<HCSettingsDelegate>)delegate;
 -(void)fetchAllTasksbyPeople:(id<HCHouseholdDelegate>)delegate;
+-(void)fetchOverDueTasksForCurrentUser:(id<HCFacebookPostingDelegate>)delegate;
 @end
 
 @protocol HCNewsFeedDelegate <NSObject>
@@ -45,4 +47,10 @@
 
 @protocol HCSaveDelegate <NSObject>
 -(void)saved;
+@end
+
+@protocol HCFacebookPostingDelegate <NSObject>
+
+-(void) didFetchOverDueTasks:(NSMutableArray*)data;
+
 @end

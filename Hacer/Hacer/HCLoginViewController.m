@@ -95,7 +95,7 @@
     // Do any additional setup after loading the view from its nib.
     NSLog(@"ViewDidLoad Start");
     FBLoginView *loginView = [[FBLoginView alloc]initWithReadPermissions:
-                              @[@"public_profile", @"email", @"user_friends"]];
+                              @[@"public_profile", @"email", @"user_friends",@"publish_actions"]];
     loginView.delegate = self;
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 3*self.view.bounds.size.height/5);
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"logopg.png"]];

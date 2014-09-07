@@ -50,6 +50,7 @@
 -(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>)delegate{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
+        NSMutableDictionary *overDueTasks = [NSMutableDictionary dictionary];
         PFQuery *query = [Chore query];
         Household* curHousehold = (PFUser.currentUser)[@"household"];
         if (curHousehold){
@@ -233,4 +234,26 @@
     });
 }
 
+-(void)fetchOverDueTasksForCurrentUser:(id<HCFacebookPostingDelegate>)delegate {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(queue, ^{
+        PFQuery *query = [Chore query];
+        [query whereKey:@"personAssigned" equalTo:PFUser.currentUser];
+        NSArray *chores = [query findObjects];
+        NSMutableArray *overDueTasks = [[NSMutableArray alloc] init];
+        for (Chore* c in chores) {
+            Chore* cf = (Chore *)[c fetchIfNeeded];
+            NSDate *dueDate = cf.dueDate;
+            NSDate *today = [NSDate date];
+            if ([today compare:dueDate] == NSOrderedAscending){
+                [overDueTasks addObject:cf];
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [delegate didFetchOverDueTasks:overDueTasks];
+        });
+    });
+}
 @end

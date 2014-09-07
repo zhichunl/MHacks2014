@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HCDataCenter.h"
 
-@interface HCAppDelegate : UIResponder <UIApplicationDelegate>
+@interface HCAppDelegate : UIResponder <UIApplicationDelegate, HCFacebookPostingDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

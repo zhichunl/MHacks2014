@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D9B4B4419BBD5C700DD8501 /* HCFacebookPostHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B4B4319BBD5C700DD8501 /* HCFacebookPostHandler.m */; };
 		0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */; };
 		0DB74CEE19BADB64008E7CC1 /* HCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */; };
 		2833543319BAF2150039E489 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833543219BAF2150039E489 /* bg.png */; };
@@ -74,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D9B4B4219BBD5C700DD8501 /* HCFacebookPostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCFacebookPostHandler.h; sourceTree = "<group>"; };
+		0D9B4B4319BBD5C700DD8501 /* HCFacebookPostHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCFacebookPostHandler.m; sourceTree = "<group>"; };
 		0DB74CEA19BADB64008E7CC1 /* HCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSettingsViewController.h; sourceTree = "<group>"; };
 		0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSettingsViewController.m; sourceTree = "<group>"; };
 		0DB74CEC19BADB64008E7CC1 /* HCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HCSettingsViewController.xib; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				58E2DAD419BAC6CC0047444E /* HCAppDelegate.m */,
 				58E2DB0E19BACFAD0047444E /* HCLoginViewController.h */,
 				58E2DB0F19BACFAD0047444E /* HCLoginViewController.m */,
+				0D9B4B4219BBD5C700DD8501 /* HCFacebookPostHandler.h */,
+				0D9B4B4319BBD5C700DD8501 /* HCFacebookPostHandler.m */,
 				58E2DB1019BACFAD0047444E /* HCLoginViewController.xib */,
 				0DB74CEA19BADB64008E7CC1 /* HCSettingsViewController.h */,
 				0DB74CEB19BADB64008E7CC1 /* HCSettingsViewController.m */,
@@ -451,6 +456,7 @@
 				58E2DB1119BACFAD0047444E /* HCLoginViewController.m in Sources */,
 				58F8143819BAFBA100148189 /* HCNewsFeedTableViewCell.m in Sources */,
 				58F8144919BB428E00148189 /* HCTaskDetailViewController.m in Sources */,
+				0D9B4B4419BBD5C700DD8501 /* HCFacebookPostHandler.m in Sources */,
 				58E2DAD119BAC6CC0047444E /* main.m in Sources */,
 				58E2DAD519BAC6CC0047444E /* HCAppDelegate.m in Sources */,
 				0DB74CED19BADB64008E7CC1 /* HCSettingsViewController.m in Sources */,
