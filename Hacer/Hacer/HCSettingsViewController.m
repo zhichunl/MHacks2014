@@ -74,6 +74,7 @@
 }
 
 -(void)initializeView {
+    self.peopleList.text = @"";
     self.navigationItem.title = @"Settings";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPerson)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(updateData)];
@@ -95,7 +96,7 @@
 
 -(void)addPerson
 {
-    if([self.household.name isEqualToString:@""])
+    if(!self.household.name)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter household" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [alert show];
@@ -109,12 +110,14 @@
     }
 }
 
-- (void)textViewDidChange:(UITextView *)textView {
-    if(!self.household) {
-        self.household = [[Household alloc] init];
+- (void)textFieldDidChange:(UITextField *)textField {
+    if ([textField isEqual:self.hhName]){
+        if(!self.household) {
+            self.household = [[Household alloc] init];
+        }
+        self.household.name = textField.text;
+        [self.dataCenter updateHousehold:self.household];
     }
-    self.household.name = textView.text;
-    [self.dataCenter updateHousehold:self.household];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -184,7 +187,15 @@
     
     for(id<FBGraphUser> fbUser in friendPickerController.selection)
     {
-        [self.peopleList.text stringByAppendingString:[NSString stringWithFormat:@"%@ \n", (NSString*)fbUser.name]];
+        NSLog(@"supposed to print this");
+        if([self.peopleList.text isEqualToString:@""]) {
+            NSLog(@"People list empty");
+            self.peopleList.text = [NSString stringWithFormat:@"%@ \n", (NSString*)fbUser.name];
+        }
+        else {
+            NSLog(@"peoplelist not empty");
+            [self.peopleList.text stringByAppendingString:[NSString stringWithFormat:@"%@ \n", (NSString*)fbUser.name]];
+        }
     }
     
     NSLog(@"Done clicked");
@@ -225,8 +236,11 @@
             [alert show];
             return;
         }
+        if(!self.household) {
+            self.household = [[Household alloc] init];
+        }
         self.household.name = self.hhName.text;
-        [self.household save];
+        [self.dataCenter updateHousehold:self.household];
         for(PFUser* person in self.people) {
             person[@"household"] = self.household;
             person[@"weeklyQuota"] = [[NSNumber alloc] initWithInt:[self.creditQuota.text intValue]];
