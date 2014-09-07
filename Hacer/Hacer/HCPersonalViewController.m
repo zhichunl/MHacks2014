@@ -33,6 +33,11 @@
     self.chores.editable = YES;
     self.chores.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:17];
     self.chores.editable = NO;
+    self.userName.textColor = [UIColor whiteColor];
+    self.weeklyQuota.textColor = [UIColor whiteColor];
+    self.earnedCredit.textColor = [UIColor whiteColor];
+    self.accuCredit.textColor = [UIColor whiteColor];
+    self.chores.textColor = [UIColor whiteColor];
     [self.view setNeedsDisplay];
 }
 
