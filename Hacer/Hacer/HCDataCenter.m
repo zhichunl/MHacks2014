@@ -50,7 +50,6 @@
 -(void)fetchAllTasksByDate:(id<HCNewsFeedDelegate>)delegate{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        NSMutableDictionary *overDueTasks = [NSMutableDictionary dictionary];
         PFQuery *query = [Chore query];
         Household* curHousehold = (PFUser.currentUser)[@"household"];
         if (curHousehold){
@@ -68,7 +67,7 @@
                 }
                 else{
                     NSMutableArray *array = [choresF[due] mutableCopy];
-                    [array addObject:due];
+                    [array addObject:cf];
                     choresF[due] = array;
                 }
             }
