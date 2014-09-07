@@ -190,7 +190,7 @@
         if (currUser) {
             NSLog(@"Settings viewDidLoad");
             if(currUser[@"HH"]) {
-                Household* currHousehold = currUser[@"HH"];
+                //Household* currHousehold = currUser[@"HH"];
                 Household* currHouseholdFetch = [[Household alloc]init];
                 currHouseholdFetch.name = currUser[@"HH"];
                 if (currHouseholdFetch) {
@@ -206,6 +206,31 @@
         }
     });
 
+}
+
+-(void)fetchAllTasksbyPeople:(id<HCHouseholdDelegate>)delegate{
+    NSArray* people = [self getPeopleInHouse];
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+    NSMutableDictionary *valDict = [NSMutableDictionary dictionary];
+    for (PFUser *p in people){
+        PFQuery *query = [Chore query];
+        [query whereKey:@"personAssigned" equalTo:p];
+        NSArray *choresP = [query findObjects];
+        NSMutableArray* choresFP = [NSMutableArray array];
+        NSUInteger sumP = 0;
+        for (Chore *e in choresP){
+            Chore *ef = (Chore *)[e fetchIfNeeded];
+            if (ef.finished){
+                sumP += ef.Credit;
+                [choresFP addObject:ef];
+            }
+        }
+        valDict[p.username] = [[NSNumber alloc] initWithInteger:sumP];
+        newDict[p.username] = choresFP;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [delegate dataFetched:newDict valueDict:valDict];
+    });
 }
 
 @end

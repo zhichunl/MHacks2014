@@ -10,7 +10,7 @@
 #import "HCDataCenter.h"
 #import "Parse/Parse.h"
 
-@interface HCSettingsViewController() <UITableViewDataSource, UITableViewDelegate, HCSettingsDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
+@interface HCSettingsViewController() <HCSettingsDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UITextView *textView;
 @property (strong, nonatomic) Household *household;
