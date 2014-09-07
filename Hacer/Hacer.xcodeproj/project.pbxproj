@@ -18,6 +18,7 @@
 		2833546619BB11D30039E489 /* users.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833546019BB11D30039E489 /* users.png */; };
 		2833546919BB11DD0039E489 /* home_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833546719BB11DD0039E489 /* home_pressed.png */; };
 		2833546A19BB11DD0039E489 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 2833546819BB11DD0039E489 /* home.png */; };
+		28585D5519BBE75000C01155 /* logopg.png in Resources */ = {isa = PBXBuildFile; fileRef = 28585D5419BBE75000C01155 /* logopg.png */; };
 		5858BF0D19BAEFF600E0DD5E /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */; };
 		5858BF1119BAF58800E0DD5E /* HCPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5858BF0F19BAF58800E0DD5E /* HCPersonalViewController.m */; };
 		5858BF1219BAF58800E0DD5E /* HCPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5858BF1019BAF58800E0DD5E /* HCPersonalViewController.xib */; };
@@ -85,6 +86,7 @@
 		2833546019BB11D30039E489 /* users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = users.png; path = ../../Images/users.png; sourceTree = "<group>"; };
 		2833546719BB11DD0039E489 /* home_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_pressed.png; path = ../../Images/home_pressed.png; sourceTree = "<group>"; };
 		2833546819BB11DD0039E489 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = ../../Images/home.png; sourceTree = "<group>"; };
+		28585D5419BBE75000C01155 /* logopg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logopg.png; path = ../../Images/logopg.png; sourceTree = "<group>"; };
 		5858BF0C19BAEFF600E0DD5E /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		5858BF0E19BAF58800E0DD5E /* HCPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCPersonalViewController.h; sourceTree = "<group>"; };
 		5858BF0F19BAF58800E0DD5E /* HCPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCPersonalViewController.m; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				2833545B19BB11D30039E489 /* settings-3_pressed.png */,
 				2833545C19BB11D30039E489 /* settings-3.png */,
 				2833545D19BB11D30039E489 /* timeline_pressed.png */,
+				28585D5419BBE75000C01155 /* logopg.png */,
 				2833545E19BB11D30039E489 /* timeline.png */,
 				2833546719BB11DD0039E489 /* home_pressed.png */,
 				2833546819BB11DD0039E489 /* home.png */,
@@ -421,6 +424,7 @@
 				2833546619BB11D30039E489 /* users.png in Resources */,
 				2833546A19BB11DD0039E489 /* home.png in Resources */,
 				2833546119BB11D30039E489 /* settings-3_pressed.png in Resources */,
+				28585D5519BBE75000C01155 /* logopg.png in Resources */,
 				2833546519BB11D30039E489 /* users_pressed.png in Resources */,
 				2833546919BB11DD0039E489 /* home_pressed.png in Resources */,
 			);
