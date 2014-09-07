@@ -46,6 +46,10 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Rankings";
+    self.navigationItem.title = @"Setting";
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    //UIColor *layer = [UIColor colorWithRed:216/255.f green:216/255.f blue:216/255.f alpha:90/255.f];
+    self.view.backgroundColor = background;
     self.people = [NSMutableArray array];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

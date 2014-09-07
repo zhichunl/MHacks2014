@@ -52,6 +52,7 @@
 //the action after user login.
 -(void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
     HCSettingsViewController *svc = [[HCSettingsViewController alloc] init];
+    UINavigationController *snc = [[UINavigationController alloc] initWithRootViewController:svc];
     svc.tabBarItem.title = @"Settings";
     HCPersonalViewController *pvc = [[HCPersonalViewController alloc] init];
     UINavigationController *pnc = [[UINavigationController alloc] initWithRootViewController:pvc];
@@ -79,7 +80,7 @@
     htvc.tabBarItem.image = house;
     htvc.tabBarItem.selectedImage = house_pressed;
     UITabBarController *tbc = [[UITabBarController alloc] init];
-    tbc.viewControllers = @[fnc, hnc, pnc, svc];
+    tbc.viewControllers = @[fnc, hnc, pnc, snc];
     [self.navigationController presentViewController:tbc animated:YES completion:NULL];
 }
 

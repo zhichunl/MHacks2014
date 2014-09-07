@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HCSettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *hhName;
+@property (weak, nonatomic) IBOutlet UITextField *creditQuota;
+@property (weak, nonatomic) IBOutlet UITextView *peopleList;
 
 @end

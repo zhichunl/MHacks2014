@@ -15,5 +15,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *accuCredit;
 @property (weak, nonatomic) IBOutlet UILabel *weeklyQuota;
 @property (weak, nonatomic) IBOutlet UITextView *chores;
-
 @end

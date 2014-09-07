@@ -12,13 +12,9 @@
 
 @interface HCSettingsViewController() <HCSettingsDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
 
-@property (strong, nonatomic) UITextView *textView;
 @property (strong, nonatomic) Household *household;
 @property (strong, nonatomic) NSMutableArray *people;
 @property (strong, nonatomic) HCDataCenter *dataCenter;
-@property (strong, nonatomic) IBOutlet UITextView *peopleList;
-- (IBAction)addPersonButton:(id)sender;
-@property (strong, nonatomic) IBOutlet UITextField *creditQuota;
 @end
 
 @implementation HCSettingsViewController
@@ -43,65 +39,23 @@
 }
 
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    
-    if([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        self.household = [[Household alloc]init];
-        self.household.name = self.textView.text;
-        return NO;
-    }
-    
-    return YES;
-}
-
--(UITextView*)makeTextView {
-    CGFloat x = 30;
-    CGFloat y = 300;
-    CGFloat width = self.view.frame.size.width - 60;
-    CGFloat height = 40;
-    CGRect tableFrame = CGRectMake(x, y, width, height);
-    UITextView *textView = [[UITextView alloc]initWithFrame:tableFrame textContainer:nil];
-    
-    textView.layer.cornerRadius = 4.0;
-    textView.layer.masksToBounds = YES;
-    [textView setFont:[UIFont systemFontOfSize:30]];
-    
-    textView.delegate = self;
-    
-    return textView;
-}
-
 - (void)viewDidLoad
 {
-    NSLog(@"Settings viewDidLoad");
     [super viewDidLoad];
+    self.navigationItem.title = @"Setting";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPerson)];
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    UIColor *layer = [UIColor colorWithRed:216/255.f green:216/255.f blue:216/255.f alpha:90/255.f];
+    self.view.backgroundColor = background;
+    self.peopleList.textColor = [UIColor whiteColor];
+    self.peopleList.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
+    self.peopleList.layer.cornerRadius = 5;
+    self.peopleList.backgroundColor = layer;
     self.dataCenter = [HCDataCenter sharedCenter];
     [self.dataCenter setupSettings:self];
-    self.textView = [self makeTextView];
-    [self.view addSubview:self.textView];
-    self.peopleList.layer.cornerRadius = 4.0;
-    self.peopleList.layer.masksToBounds = YES;
-    
 }
-- (IBAction)addPersonButton:(id)sender {
-    if(self.household == nil)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!"
-                                                        message:@"Please name your household first."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    [self addPerson];
-    
-}
-
 -(void)addPerson
 {
-    NSLog(@"Button pressed");
     FBFriendPickerViewController *controller = [[FBFriendPickerViewController alloc] init];
     
     controller.delegate = self;
