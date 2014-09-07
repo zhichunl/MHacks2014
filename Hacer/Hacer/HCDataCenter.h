@@ -32,7 +32,7 @@
 -(void)getPersonalInfo:(id<HCPersonalDelegate>)delegate;
 -(NSArray *)getPeopleInHouse;
 -(void)saveTask: (HCNewChoreViewController *)ncvc del:(id<HCSaveDelegate>)delegate;
--(void)setupSettings:(id<HCSettingsDelegate>)delegate;
+//-(void)setupSettings:(id<HCSettingsDelegate>)delegate;
 -(void)fetchAllTasksbyPeople:(id<HCHouseholdDelegate>)delegate;
 -(void)fetchOverDueTasksForCurrentUser:(id<HCFacebookPostingDelegate>)delegate;
 @end

@@ -9,6 +9,7 @@
 #import "HCSettingsViewController.h"
 #import "HCDataCenter.h"
 #import "Parse/Parse.h"
+#import "MBProgressHUD.h"
 
 @interface HCSettingsViewController() <UITextFieldDelegate, UITextViewDelegate, FBFriendPickerDelegate, UIAlertViewDelegate>
 
@@ -32,26 +33,44 @@
 {
     [super viewDidLoad];
     [self initializeView];
+    self.people = [NSMutableArray array];
+    [self initalizeData];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self initalizeData];
 }
 
 -(void)initalizeData {
-    self.dataCenter = [HCDataCenter sharedCenter];
-    for(PFUser* person in [self.dataCenter getPeopleInHouse]){
-        PFUser *pk = (PFUser *)[person fetchIfNeeded];
-        [self.people addObject:pk];
-        
-        if(PFUser.currentUser[@"weeklyQuota"]){
-            self.creditQuota.text = [(NSNumber*)PFUser.currentUser[@"weeklyQuota"]stringValue];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    __weak HCSettingsViewController* weaksel = self;
+    [MBProgressHUD showHUDAddedTo:weaksel.view animated:YES];
+    dispatch_async(queue, ^{
+        weaksel.dataCenter = [HCDataCenter sharedCenter];
+        NSArray *people = [weaksel.dataCenter getPeopleInHouse];
+        for(PFUser* person in people){
+            PFUser *pk = (PFUser *)[person fetchIfNeeded];
+            [weaksel.people addObject:pk];
+            if(PFUser.currentUser[@"weeklyQuota"]){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    weaksel.creditQuota.text = [(NSNumber*)PFUser.currentUser[@"weeklyQuota"] stringValue];
+                });
+            }
         }
-    }
-
-    Household* household = PFUser.currentUser[@"household"];
-    if(household) {
-        Household *h = (Household *)[household fetchIfNeeded];
-        self.hhName.text = (NSString*)h.name;
-        self.household = h;
-    }
+        
+        Household* household = PFUser.currentUser[@"household"];
+        if(household) {
+            Household *h = (Household *)[household fetchIfNeeded];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                weaksel.hhName.text = (NSString*)h.name;
+            });
+            weaksel.household = h;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideAllHUDsForView:weaksel.view animated:YES];
+        });
+    });
 }
 
 -(void)initializeView {
@@ -77,7 +96,6 @@
 -(void)addPerson
 {
     FBFriendPickerViewController *controller = [[FBFriendPickerViewController alloc] init];
-    
     controller.delegate = self;
     controller.title = @"Pick Friends to add";
     [controller loadData];
@@ -178,7 +196,7 @@
             return NO;
         }
     }
-            return YES;
+    return YES;
 }
 
 

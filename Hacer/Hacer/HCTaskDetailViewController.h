@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Chore.h"
 
 @interface HCTaskDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *NameAndValue;
@@ -19,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *finished;
 @property (strong, nonatomic) NSString *completed;
 -(void)claimButtonPressed;
+@property (strong, nonatomic) Chore* curChore;
 @property BOOL claimed;
 @end

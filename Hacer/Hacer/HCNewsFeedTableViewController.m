@@ -254,6 +254,7 @@
     NSArray *chores = self.dataDict[self.sections[indexPath.section]];
     Chore *curChore = chores[indexPath.row];
     tdvc.navigationItem.title = curChore.name;
+    tdvc.curChore = curChore;
     tdvc.name = [NSString stringWithFormat:@"%@ with a value of %ld credit(s).", curChore.name, curChore.Credit];
     tdvc.date = [NSString stringWithFormat:@"Due on %@.", self.sections[indexPath.section]];
     if (curChore.finished){
@@ -275,8 +276,13 @@
         });
     }
     UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:tdvc];
-    tdvc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_cancel)];
+    tdvc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
     [self.navigationController presentViewController:nc animated:YES completion:NULL];
+}
+
+-(void)done{
+    [[HCDataCenter sharedCenter] fetchAllTasksByDate:self];
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
