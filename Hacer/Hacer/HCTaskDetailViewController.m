@@ -52,11 +52,11 @@
     self.finished.font = [UIFont fontWithName:@"Chalkboard SE Regular" size:20.0f];
     self.finished.text = self.completed;
     if (!self.claimed){
-        //self.button.alpha = 1.0;
+        self.button.alpha = 1.0;
         self.AssignedTo.text = @"Not assigned to anyone!";
     }
     else{
-        //self.button.alpha = 0.0;
+        self.button.alpha = 0.0;
     }
     // Do any additional setup after loading the view from its nib.
 }
